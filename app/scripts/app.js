@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('srcApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute'
-])
+angular
+  .module('stockApp', [
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ngRoute'
+  ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
