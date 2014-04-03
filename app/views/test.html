@@ -1,0 +1,9 @@
+<p>This is the test view.</p>
+
+<ul>
+  <li ng-repeat="result in data.query.results.quote">
+    [{{$index + 1}}] {{result.Symbol}} @ {{result.Date}}:
+
+    Open: {{result.Open}} High: {{result.High}} Low: {{result.Low}} Close: {{result.Close}} Avg: {{result.Adj_Close}}
+  </li>
+</ul>
