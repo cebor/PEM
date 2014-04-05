@@ -34,7 +34,7 @@ grunt build
 ```
 
 #### Generator
-- [AngularJS generator docs](https://github.com/yeoman/generator-angular#app)
+- [AngularJS generator docs](https://github.com/yeoman/generator-angular#generators)
 
 
 ***
