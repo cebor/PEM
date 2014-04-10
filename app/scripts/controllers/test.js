@@ -10,7 +10,8 @@ angular.module('stockApp')
         $scope.data = data.query.results.quote;
       })
       .error(function () {
-        //TODO
+        // TODO
+        console.error('HTTP ERROR!');
       });
 
   });
