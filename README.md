@@ -45,8 +45,8 @@ Tutorials & Docs
 
 ### Yeoman
 #### Tuts
-- [Text Tut 1](http://code.tutsplus.com/tutorials/building-apps-with-the-yeoman-workflow--net-33254)
-- [Text Tut 2](http://www.thinkster.io/angularjs/r1gRPYp4kM/angularjs-tutorial-learn-to-build-modern-webapps)
+- [Text Tut](http://code.tutsplus.com/tutorials/building-apps-with-the-yeoman-workflow--net-33254)
+- [Text Tut](http://www.thinkster.io/angularjs/r1gRPYp4kM/angularjs-tutorial-learn-to-build-modern-webapps)
 - [Video Tut](https://www.youtube.com/watch?v=rqdRXqeqgZs)
 
 #### Docs
@@ -56,7 +56,8 @@ Tutorials & Docs
 #### Tuts
 - [Text Tut](http://docs.angularjs.org/tutorial)
 - [Video Tuts](https://www.youtube.com/user/angularjs)
-- [Nice Video Tut](https://www.youtube.com/watch?v=i9MHigUZKEM)
+- [Video Tut](https://www.youtube.com/watch?v=i9MHigUZKEM)
+- [Video Tut](https://www.youtube.com/watch?v=M4spK4QeUKY)
 
 #### Docs
 - [Developer Guide](http://code.angularjs.org/1.2.16/docs/guide)
