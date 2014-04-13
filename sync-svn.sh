@@ -20,4 +20,3 @@ git add --all .
 git ci -am "git sync"
 
 git svn dcommit
-
