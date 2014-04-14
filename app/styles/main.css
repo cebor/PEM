@@ -95,14 +95,13 @@ body {
 /*
  * Sidebar
  */
-
-/* Hide for mobile, show later */
 .sidebar {
-  display: none;
+  background-color: #747474;
 }
+
 @media (min-width: 768px) {
   .sidebar {
-    position: fixed;
+    position: absolute;
     top: 51px;
     bottom: 0;
     left: 0;
@@ -111,10 +110,11 @@ body {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #747474;
     border-right: 1px solid #eee;
   }
 }
+
+
 
 /* Sidebar navigation */
 .nav-sidebar {
@@ -136,6 +136,47 @@ body {
   text-decoration: none;
   background-color: #a0a0a0;
 }
+
+
+@media (min-width: 768px) {
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+.sidebar-toggle {
+  position: relative;
+  float: left;
+  padding: 7px 10px 7px 10px;
+  margin-top: 8px;
+  margin-left: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-color: #333;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.sidebar-toggle:hover{
+  background-color: #333;
+}
+
+.end-of-sidebar{
+  margin-bottom: 0px;
+}
+
+.responsive-heading {
+   font-size: 15px;
+ }
+@media (min-width: 450px) {
+  .responsive-heading {
+    font-size: inherit;
+  }
+}
+
+
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
