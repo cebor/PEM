@@ -6,7 +6,7 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'nvd3ChartDirectives'
+    'highcharts-ng'
   ])
   .config(function ($routeProvider) {
     $routeProvider
