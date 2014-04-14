@@ -5,7 +5,8 @@ angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'highcharts-ng'
   ])
   .config(function ($routeProvider) {
     $routeProvider
