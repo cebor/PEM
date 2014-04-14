@@ -149,6 +149,10 @@ module.exports = function (grunt) {
     bowerInstall: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
+        exclude: [
+          'highcharts-more.js',
+          'modules/exporting.src.js'
+        ],
         ignorePath: '<%= yeoman.app %>/'
       }
     },
