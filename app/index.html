@@ -23,15 +23,19 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <button type="button" class="sidebar-toggle" data-toggle="collapse" data-target=".blub2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="glyphicon glyphicon-list"></span>
+          </button>
+          <a class="navbar-brand" href="#">PEM<span class="responsive-heading"> - Personal Exchange Monitoring</span></a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".blub">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">PEM - Personal Exchange Monitoring</a>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse blub">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
@@ -56,7 +60,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-3 col-md-2 sidebar collapse blub2">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview</a></li>
             <li><a href="#">Random</a></li>
@@ -67,7 +71,7 @@
             <li><a href="">Microsoft</a></li>
             <li><a href="">Apple</a></li>
           </ul>
-          <ul class="nav nav-sidebar">
+          <ul class="nav nav-sidebar end-of-sidebar">
             <li><a href="">MacDonalds</a></li>
             <li><a href="">Coca Cola</a></li>
             <li><a href="">Unileva</a></li>
