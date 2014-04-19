@@ -5,13 +5,8 @@ angular.module('stockApp')
 
     $scope.data = [];
 
-    StockData.get()
-      .success(function (data) {
-        $scope.data = data.query.results.quote;
-      })
-      .error(function () {
-        // TODO
-        console.error('HTTP ERROR!');
-      });
+    StockData.get('YHOO', '2013-09-01', '2014-03-31').then(function (data) {
+      $scope.data = data;
+    });
 
   });
