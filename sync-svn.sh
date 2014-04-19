@@ -9,7 +9,6 @@ rsync \
   --exclude "node_modules" \
   --exclude "dist" \
   --exclude ".tmp" \
-  --exclude ".sass-cache" \
   --exclude "app/bower_components" \
   --delete \
   -avP . $SVN
