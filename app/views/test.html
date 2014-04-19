@@ -1,9 +1,3 @@
 <img src="images/ajax-loader.gif" class="center-block" ng-hide="data">
 
-<ul>
-  <li ng-repeat="result in data">
-    [{{$index + 1}}] {{result.Symbol}} @ {{result.Date}}:
-
-    Open: {{result.Open}} High: {{result.High}} Low: {{result.Low}} Close: {{result.Close}} Avg: {{result.Adj_Close}}
-  </li>
-</ul>
+{{data}}
