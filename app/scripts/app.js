@@ -2,9 +2,6 @@
 
 angular
   .module('stockApp', [
-    'ngCookies',
-    'ngResource',
-    'ngSanitize',
     'ngRoute',
     'highcharts-ng'
   ])
