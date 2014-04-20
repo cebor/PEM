@@ -1,4 +1,4 @@
-Personal Exchange Monitoring
+Personal Exchange Monitoring [![Build Status](https://travis-ci.org/cebor/gui-project.svg)](https://travis-ci.org/cebor/gui-project)
 ===========
 
 Requirements
