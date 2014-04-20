@@ -2,12 +2,6 @@
 
 angular.module('stockApp')
   .controller('MainCtrl', function ($scope, StockData) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
     $scope.stockNames = [
       'YHOO'
     ];
