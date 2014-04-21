@@ -3,7 +3,7 @@ Personal Exchange Monitoring [![Build Status](https://travis-ci.org/cebor/gui-pr
 
 Requirements
 -----------
-- [NodeJs](http://nodejs.org/)
+- [NodeJS](http://nodejs.org/)
 - [Yeoman + AngularJS generator](http://yeoman.io/)
 - [EditorConfig](http://editorconfig.org/)
 
@@ -44,6 +44,7 @@ Tutorials & Docs
 -----------
 
 ### Yeoman
+
 #### Tuts
 - [Text Tut](http://code.tutsplus.com/tutorials/building-apps-with-the-yeoman-workflow--net-33254)
 - [Text Tut](http://www.thinkster.io/angularjs/r1gRPYp4kM/angularjs-tutorial-learn-to-build-modern-webapps)
@@ -52,7 +53,9 @@ Tutorials & Docs
 #### Docs
 - [Wiki](https://github.com/yeoman/yeoman/wiki)
 
+
 ### AngularJS
+
 #### Tuts
 - [Text Tut](http://docs.angularjs.org/tutorial)
 - [Video Tuts](https://www.youtube.com/user/angularjs)
