@@ -44,11 +44,11 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Firefox', 'PhantomJS'],
+    browsers: process.env.TRAVIS ? ['Firefox', 'PhantomJS'] : ['Chrome'],
 
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: process.env.TRAVIS || false
   });
 };
