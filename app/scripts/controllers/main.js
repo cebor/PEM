@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('stockApp')
-  .controller('MainCtrl', function ($scope, StockData) {
+  .controller('MainCtrl', function ($scope, $q, StockData) {
+
+    var promises = [];
 
     $scope.stockSymbols = [
       'YHOO',
@@ -9,9 +11,10 @@ angular.module('stockApp')
       'KO'
     ];
 
-    angular.forEach($scope.stockSymbols, function (value) {
+    // get data for all symbols in stockSymbols[]
+    angular.forEach($scope.stockSymbols, function (value, key) {
 
-      StockData.get(value, '2013-09-01', '2014-03-31').then(function (data) {
+      promises[key] = StockData.get(value, '2013-09-01', '2014-03-31').then(function (data) {
 
         var serie = {
           name: value,
@@ -22,12 +25,17 @@ angular.module('stockApp')
         };
 
         $scope.chartConfig.series.push(serie);
-        $scope.chartConfig.loading = false;
 
       });
 
     });
 
+    // wait until all promises are resolved
+    $q.all(promises).then(function () {
+      $scope.chartConfig.loading = false;
+    });
+
+    // highcharts/highstock config
     $scope.chartConfig = {
       options: {
         chart: {
