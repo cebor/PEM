@@ -4,21 +4,27 @@ angular.module('stockApp')
   .controller('MainCtrl', function ($scope, StockData) {
 
     $scope.stockSymbols = [
-      'YHOO'
+      'YHOO',
+      'MSFT',
+      'KO'
     ];
 
-    StockData.get($scope.stockSymbols[0], '2013-09-01', '2014-03-31').then(function (data) {
+    angular.forEach($scope.stockSymbols, function (value) {
 
-      var serie = {
-        name: $scope.stockSymbols[0],
-        data: data,
-        tooltip: {
-          valueDecimals: 2
-        }
-      };
+      StockData.get(value, '2013-09-01', '2014-03-31').then(function (data) {
 
-      $scope.chartConfig.series.push(serie);
-      $scope.chartConfig.loading = false;
+        var serie = {
+          name: value,
+          data: data,
+          tooltip: {
+            valueDecimals: 2
+          }
+        };
+
+        $scope.chartConfig.series.push(serie);
+        $scope.chartConfig.loading = false;
+
+      });
 
     });
 
