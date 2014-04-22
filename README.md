@@ -16,7 +16,7 @@ cd gui-project
 npm install && bower install
 ```
 
-Commands
+Usage
 -----------
 #### Dev Server
 ```
