@@ -11,7 +11,9 @@
 </carousel>-->
 
 <highchart config="chartConfig"></highchart>
-<button id="zoom_1">Zoom1</button>
-<button id="zoom_2">Zoom2</button>
 
-<div id="report" style="font: 0.8em sans-serif"></div>
+<button ng-click="zoom1()">Zoom1</button>
+<button ng-click="zoom2()">Zoom2</button>
+
+<br>
+<small><b>Set extremes:</b> {{report}}</small>
