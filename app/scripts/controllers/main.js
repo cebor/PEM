@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stockApp')
-  .controller('MainCtrl', function ($scope, StockData) {
+  .controller('MainCtrl', function ($scope, $timeout, StockData) {
 
     var symbols = [
       'YHOO',
@@ -48,11 +48,15 @@ angular.module('stockApp')
       loading: true
     };
 
-    // the button action
-    $scope.zoom1 = function () {
-      Highcharts.charts[0].xAxis[0].setExtremes(1386028800000, 1396224000000, true, true);
-    };
-    $scope.zoom2 = function () {
+    $timeout(function () {
       Highcharts.charts[0].xAxis[0].setExtremes(1388707200000, 1396224000000, true, true);
-    };
+    }, 4000);
+
+    $timeout(function () {
+      Highcharts.charts[0].xAxis[0].setExtremes(1386028800000, 1396224000000, true, true);
+    }, 6000);
+
+    $timeout(function () {
+      Highcharts.charts[0].xAxis[0].setExtremes(0, 1396224000000, true, true);
+    }, 7000);
   });
