@@ -5,11 +5,16 @@ angular.module('stockApp')
 
     var StockData = {
 
-      get: function (stockSymbol, startDate, endDate) {
+      /**
+      * get data from yahoo api
+      * @params
+      * @return
+      */
+      yql: function (symbol, startDate, endDate) {
 
         // yql query
         var query = 'select * from yahoo.finance.historicaldata' +
-          ' where symbol = "' + stockSymbol + '"' +
+          ' where symbol = "' + symbol + '"' +
           ' and startDate = "' + startDate + '"' +
           ' and endDate = "' + endDate + '"';
 
@@ -17,30 +22,59 @@ angular.module('stockApp')
         var FORMAT = 'json';
         var ENV = 'store://datatables.org/alltableswithkeys';
 
-        var deferred = $q.defer();
+        return $http.get(YAHOO_API + '?q=' + query + '&format=' + FORMAT + '&env=' + ENV);
 
-        // get data from yahoo api
-        $http.get(YAHOO_API + '?q=' + query + '&format=' + FORMAT + '&env=' + ENV)
-          .success(function (data) {
+      },
 
-            var array = [];
+      /**
+      * get data for highcharts
+      * @params
+      * @return
+      */
+      get: function (symbol, startDate, endDate) {
 
-            // pick data for highcharts
-            angular.forEach(data.query.results.quote, function(value) {
+        return this.yql(symbol, startDate, endDate).then(function (yql) {
+          var array = [];
 
-              // parse date and average stock price
-              var date = new Date(value.Date).getTime();
-              var price = parseFloat(value.Adj_Close); // jshint ignore:line
+          // parse date and average stock price
+          angular.forEach(yql.data.query.results.quote, function(value) {
+            var date = new Date(value.Date).getTime();
+            var price = parseFloat(value.Adj_Close); // jshint ignore:line
 
-              this.push([date, price]);
+            this.push([date, price]);
+          }, array);
 
-            }, array);
+          // highcharts config object
+          var config = {
+            name: symbol,
+            data: array.reverse(),
+            tooltip: {
+              valueDecimals: 2
+            }
+          };
 
-            deferred.resolve(array.reverse());
+          return config;
+        });
 
-          });
+      },
 
-        return deferred.promise;
+      /**
+      * get multiple data for highcharts
+      * @params
+      * @return
+      */
+      getAll: function (symbols, startDate, endDate) {
+
+        var that = this;
+
+        var promises = [];
+
+        angular.forEach(symbols, function (value, key) {
+          promises[key] = that.get(value, startDate, endDate);
+        });
+
+        return $q.all(promises);
+
       }
 
     };

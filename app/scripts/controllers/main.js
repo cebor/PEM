@@ -1,37 +1,16 @@
 'use strict';
 
 angular.module('stockApp')
-  .controller('MainCtrl', function ($scope, $q, StockData) {
+  .controller('MainCtrl', function ($scope, StockData) {
 
-    var promises = [];
-
-    $scope.stockSymbols = [
+    var symbols = [
       'YHOO',
       'MSFT',
       'KO'
     ];
 
-    // get data for all symbols in stockSymbols[]
-    angular.forEach($scope.stockSymbols, function (value, key) {
-
-      promises[key] = StockData.get(value, '2013-09-01', '2014-03-31').then(function (data) {
-
-        var serie = {
-          name: value,
-          data: data,
-          tooltip: {
-            valueDecimals: 2
-          }
-        };
-
-        $scope.chartConfig.series.push(serie);
-
-      });
-
-    });
-
-    // wait until all promises are resolved
-    $q.all(promises).then(function () {
+    StockData.getAll(symbols, '2013-09-01', '2014-03-31').then(function (data) {
+      $scope.chartConfig.series = data;
       $scope.chartConfig.loading = false;
     });
 
@@ -43,7 +22,7 @@ angular.module('stockApp')
           zoomType: 'x'
         },
         navigator: {
-          enabled: false
+          enabled: true
         }
       },
 
