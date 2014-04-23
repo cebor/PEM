@@ -26,6 +26,19 @@ angular.module('stockApp')
         }
       },
 
+      xAxis: {
+        range: 1 * 30 * 24 * 3600 * 1000,
+        events: {
+          setExtremes: function (e) {
+            $('#report').html('<b>Set extremes:</b> e.min: ' + e.min +
+                ' | e.max: ' + e.max + ' | e.trigger: ' + e.trigger);
+          }
+        }
+      },
+
+      rangeSelector: {
+        enabled: false
+      },
       title: {
         text: 'Stock Data'
       },
@@ -35,5 +48,14 @@ angular.module('stockApp')
       useHighStocks: true,
       loading: true
     };
+
+    // the button action
+    $('#zoom_1').click(function () {
+      Highcharts.charts[0].xAxis[0].setExtremes(1386028800000, 1396224000000, true, true);
+    });
+
+    $('#zoom_2').click(function () {
+      Highcharts.charts[0].xAxis[0].setExtremes(1388707200000, 1396224000000, true, true);
+    });
 
   });
