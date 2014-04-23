@@ -41,11 +41,10 @@ angular.module('stockApp')
         chart: {
           type: 'line',
           zoomType: 'x'
+        },
+        navigator: {
+          enabled: true
         }
-      },
-
-      rangeSelector: {
-        selected: 1
       },
 
       title: {
