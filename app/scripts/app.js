@@ -3,6 +3,7 @@
 angular
   .module('stockApp', [
     'ngRoute',
+    'ui.bootstrap',
     'highcharts-ng'
   ])
   .config(function ($routeProvider) {
