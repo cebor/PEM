@@ -30,8 +30,7 @@ angular.module('stockApp')
         range: 1 * 30 * 24 * 3600 * 1000,
         events: {
           setExtremes: function (e) {
-            $('#report').html('<b>Set extremes:</b> e.min: ' + e.min +
-                ' | e.max: ' + e.max + ' | e.trigger: ' + e.trigger);
+            $scope.report = 'e.min: ' + e.min + ' | e.max: ' + e.max + ' | e.trigger: ' + e.trigger;
           }
         }
       },
@@ -50,12 +49,10 @@ angular.module('stockApp')
     };
 
     // the button action
-    $('#zoom_1').click(function () {
+    $scope.zoom1 = function () {
       Highcharts.charts[0].xAxis[0].setExtremes(1386028800000, 1396224000000, true, true);
-    });
-
-    $('#zoom_2').click(function () {
+    };
+    $scope.zoom2 = function () {
       Highcharts.charts[0].xAxis[0].setExtremes(1388707200000, 1396224000000, true, true);
-    });
-
+    };
   });
