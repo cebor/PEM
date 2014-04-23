@@ -43,7 +43,7 @@ angular.module('stockApp')
           zoomType: 'x'
         },
         navigator: {
-          enabled: true
+          enabled: false
         }
       },
 
