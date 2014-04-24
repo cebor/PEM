@@ -6,10 +6,10 @@ angular.module('stockApp')
     var StockData = {
 
       /**
-      * get data from yahoo api
-      * @params
-      * @return
-      */
+       * get data from yahoo api
+       * @param   args
+       * @return  yql json object
+       */
       yql: function (symbol, startDate, endDate) {
 
         // yql query
@@ -27,10 +27,10 @@ angular.module('stockApp')
       },
 
       /**
-      * get data for highcharts
-      * @params
-      * @return
-      */
+       * get data for highcharts
+       * @param   args
+       * @return  highcharts json object
+       */
       get: function (symbol, startDate, endDate) {
 
         return this.yql(symbol, startDate, endDate).then(function (yql) {
@@ -59,10 +59,10 @@ angular.module('stockApp')
       },
 
       /**
-      * get multiple data for highcharts
-      * @params
-      * @return
-      */
+       * get multiple data for highcharts
+       * @param   args
+       * @return  highcharts json objects array
+       */
       getAll: function (symbols, startDate, endDate) {
 
         var that = this;
