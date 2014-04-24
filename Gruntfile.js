@@ -153,7 +153,7 @@ module.exports = function (grunt) {
           'highcharts-more.js',
           'modules/exporting.src.js'
         ],
-        ignorePath: '<%= yeoman.app %>/'
+        ignorePath: new RegExp('^<%= yeoman.app %>/')
       }
     },
 
@@ -195,7 +195,7 @@ module.exports = function (grunt) {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>']
+        assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
       }
     },
 
