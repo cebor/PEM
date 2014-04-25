@@ -9,7 +9,7 @@ angular.module('stockApp')
       'KO'
     ];
 
-    StockData.getAll(symbols, '2013-09-01', '2014-03-31').then(function (data) {
+    StockData.get(symbols, '2013-09-01', '2014-03-31').then(function (data) {
       $scope.chartConfig.series = data;
       $scope.chartConfig.loading = false;
     });
