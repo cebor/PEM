@@ -27,11 +27,11 @@ angular.module('stockApp')
       },
 
       /**
-       * get data for highcharts
+       * get one data for highcharts
        * @param   args
        * @return  highcharts json object
        */
-      get: function (symbol, startDate, endDate) {
+      getOne: function (symbol, startDate, endDate) {
 
         return this.yql(symbol, startDate, endDate).then(function (yql) {
           var array = [];
@@ -63,14 +63,14 @@ angular.module('stockApp')
        * @param   args
        * @return  highcharts json objects array
        */
-      getAll: function (symbols, startDate, endDate) {
+      get: function (symbols, startDate, endDate) {
 
         var that = this;
 
         var promises = [];
 
         angular.forEach(symbols, function (value, key) {
-          promises[key] = that.get(value, startDate, endDate);
+          promises[key] = that.getOne(value, startDate, endDate);
         });
 
         return $q.all(promises);
