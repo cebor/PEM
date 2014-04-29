@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stockApp')
-  .controller('MainCtrl', function ($scope, $timeout, $interval, StockData) {
+  .controller('MainCtrl', function ($scope, $timeout, $interval, $filter, StockData) {
 
     var symbols = [
       'YHOO',
@@ -9,17 +9,14 @@ angular.module('stockApp')
       'KO'
     ];
 
-    var startDate = ['2013', '09', '01'];
-    var endDate = ['2014', '03', '31'];
+    var RANGE = 6;
+    var ZOOM_IN_SPEED = 5;
+    var endDate = new Date();
+    var startDate = new Date();
+    startDate.setMonth(endDate.getMonth() - RANGE);
 
-    var startRange = 1;
-    var zoomSpeed = 5;
 
-    var dateArrayToString = function (dateArray) {
-      return dateArray[0] + '-' + dateArray[1] + '-' + dateArray[2];
-    };
-
-    StockData.get(symbols, dateArrayToString(startDate), dateArrayToString(endDate)).then(function (data) {
+    StockData.get(symbols, startDate.toISOString().slice(0, 10), endDate.toISOString().slice(0, 10)).then(function (data) {
       $scope.chartConfig.series = data;
       $scope.chartConfig.loading = false;
     });
@@ -36,14 +33,14 @@ angular.module('stockApp')
         }
       },
 
-      xAxis: {
-        range: startRange * 30 * 24 * 3600 * 1000,
+/*      xAxis: {
+        range: 1 * 30 * 24 * 3600 * 1000,
         events: {
           setExtremes: function (e) {
             $scope.report = 'e.min: ' + e.min + ' | e.max: ' + e.max + ' | e.trigger: ' + e.trigger;
           }
         }
-      },
+      },*/
 
       rangeSelector: {
         enabled: false
@@ -57,44 +54,52 @@ angular.module('stockApp')
       useHighStocks: true,
       loading: true
     };
+
+    var firstDate = new Date();
+    firstDate.setMonth(endDate.getMonth() - 1);
+    var midDate = new Date();
+    midDate.setMonth(endDate.getMonth() - Math.floor(RANGE / 2));
+
     $interval(function () {
+      var tmpDate = new Date(startDate.getTime());
+
       $timeout(function () {
-        var i = -30 * startRange;
-        $interval(function () {
-          if (i >= -30 * 3 * startRange) {
-            i -= zoomSpeed;
+        var stop = $interval(function () {
+          if (tmpDate.setDate(tmpDate.getDate() + ZOOM_IN_SPEED) <= firstDate) {
             Highcharts.charts[0].xAxis[0].setExtremes(
-              Date.UTC(parseInt(endDate[0]), parseInt(endDate[1]), i),
-              Date.parse(dateArrayToString(endDate)),
+              tmpDate.getTime(),
+              endDate.getTime(),
               true,
               false
             );
+          } else {
+            tmpDate = firstDate;
+            $interval.cancel(stop);
+            Highcharts.charts[0].xAxis[0].setExtremes(
+              tmpDate.getTime(),
+              endDate.getTime(),
+              true,
+              true
+            );
           }
         }, 1);
-      }, 3000);
+      }, 1000);
 
       $timeout(function () {
         Highcharts.charts[0].xAxis[0].setExtremes(
-          0,
-          Date.parse(dateArrayToString(endDate)),
+          midDate.getTime(),
+          endDate.getTime()
+        );
+      }, 4000);
+
+      $timeout(function () {
+        Highcharts.charts[0].xAxis[0].setExtremes(
+          startDate.getTime(),
+          endDate.getTime(),
           true,
           true
         );
-      }, 10000);
+      }, 6000);
 
-      $timeout(function () {
-        var i = parseInt(startDate[2]);
-        $interval(function () {
-          if (i <= 150) {
-            i += zoomSpeed;
-            Highcharts.charts[0].xAxis[0].setExtremes(
-              Date.UTC(parseInt(startDate[0]), parseInt(startDate[1]), i),
-              Date.parse(dateArrayToString(endDate)),
-              true,
-              false
-            );
-          }
-        }, 1);
-      }, 15000);
-    },15000);
+    }, 7000);
   });
