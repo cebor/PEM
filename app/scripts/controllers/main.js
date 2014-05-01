@@ -13,12 +13,12 @@ angular.module('stockApp')
 
     var startDate = new Date();
     var endDate = new Date();
-    startDate.setMonth(new Date().getMonth() - RANGE);
+    startDate.setMonth(startDate.getMonth() - RANGE);
 
-    var filterdStartDate = $filter('date')(startDate, 'yyyy-MM-dd');
-    var filterdEndDate = $filter('date')(endDate, 'yyyy-MM-dd');
+    var startDateFiltered = $filter('date')(startDate, 'yyyy-MM-dd');
+    var endDateFiltered = $filter('date')(endDate, 'yyyy-MM-dd');
 
-    StockData.get(symbols, filterdStartDate, filterdEndDate).then(function (data) {
+    StockData.get(symbols, startDateFiltered, endDateFiltered).then(function (data) {
       $scope.chartConfig.series = data;
       $scope.chartConfig.loading = false;
     });
