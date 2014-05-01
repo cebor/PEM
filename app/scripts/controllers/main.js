@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stockApp')
-  .controller('MainCtrl', function ($scope, StockData, Zoom) {
+  .controller('MainCtrl', function ($scope, $filter, StockData, Zoom) {
 
     var symbols = [
       'YHOO',
@@ -15,8 +15,10 @@ angular.module('stockApp')
     var endDate = new Date();
     startDate.setMonth(new Date().getMonth() - RANGE);
 
+    var filterdStartDate = $filter('date')(startDate, 'yyyy-MM-dd');
+    var filterdEndDate = $filter('date')(endDate, 'yyyy-MM-dd');
 
-    StockData.get(symbols, startDate.toISOString().slice(0, 10), endDate.toISOString().slice(0, 10)).then(function (data) {
+    StockData.get(symbols, filterdStartDate, filterdEndDate).then(function (data) {
       $scope.chartConfig.series = data;
       $scope.chartConfig.loading = false;
     });
@@ -56,7 +58,14 @@ angular.module('stockApp')
     };
 
     Zoom.start(startDate, endDate, RANGE);
-    $scope.stop = function(){
-      Zoom.stop();    
-    }
+
+    $scope.stop = function () {
+      Zoom.stop();
+    };
+
+    // stop zoom on $scope destroy (route change)
+    $scope.$on('$destroy', function () {
+      Zoom.stop();
+    });
+
   });
