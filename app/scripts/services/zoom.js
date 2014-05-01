@@ -5,22 +5,23 @@ angular.module('stockApp')
 
     var ZOOM_IN_SPEED = 5;
 
-    var intervalId;
+    var intervals = [];
+    var timeouts = [];
 
     this.start = function (startDate, endDate, range) {
 
-      if (!intervalId) {
+      if (!intervals.length) {
 
         var firstDate = new Date();
         firstDate.setMonth(endDate.getMonth() - 1);
         var midDate = new Date();
         midDate.setMonth(endDate.getMonth() - Math.floor(range / 2));
 
-        intervalId = $interval(function () {
+        intervals[0] = $interval(function () {
           var tmpDate = new Date(startDate.getTime());
 
-          $timeout(function () {
-            var stop = $interval(function () {
+          timeouts[0] = $timeout(function () {
+            intervals[1] = $interval(function () {
               if (tmpDate.setDate(tmpDate.getDate() + ZOOM_IN_SPEED) <= firstDate) {
                 Highcharts.charts[0].xAxis[0].setExtremes(
                   tmpDate.getTime(),
@@ -30,7 +31,7 @@ angular.module('stockApp')
                 );
               } else {
                 tmpDate = firstDate;
-                $interval.cancel(stop);
+                $interval.cancel(intervals[1]);
                 Highcharts.charts[0].xAxis[0].setExtremes(
                   tmpDate.getTime(),
                   endDate.getTime(),
@@ -41,14 +42,14 @@ angular.module('stockApp')
             }, 1);
           }, 1000);
 
-          $timeout(function () {
+          timeouts[1] = $timeout(function () {
             Highcharts.charts[0].xAxis[0].setExtremes(
               midDate.getTime(),
               endDate.getTime()
             );
           }, 4000);
 
-          $timeout(function () {
+          timeouts[2] = $timeout(function () {
             Highcharts.charts[0].xAxis[0].setExtremes(
               startDate.getTime(),
               endDate.getTime(),
@@ -64,8 +65,16 @@ angular.module('stockApp')
     };
 
     this.stop = function () {
-      $interval.cancel(intervalId);
-      intervalId = undefined;
+      angular.forEach(intervals, function (interval) {
+        $interval.cancel(interval);
+      });
+
+      angular.forEach(timeouts, function (timeout) {
+        $timeout.cancel(timeout);
+      });
+
+      intervals = [];
+      timeouts = [];
     };
 
   });
