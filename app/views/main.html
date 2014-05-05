@@ -11,10 +11,16 @@
 </carousel>-->
 
 <highchart config="chartConfig"></highchart>
-<button ng-click="stop()">stop</button>
-<div>
-  <script type="text/javascript" src="//p3k.org/rss/index.js?url=http%3A%2F%2Fwww.heise.de%2Fnewsticker%2Fheise.rdf&amp;maxItems=2&amp;width=800&amp;height=-1&amp;radius=5&amp;frameColor=%23b3a28e&amp;titleBarColor=%23333333&amp;titleBarTextColor=%23ffead2&amp;boxFillColor=%23555555&amp;textColor=%23FFFFFF&amp;linkColor=%23333&amp;fontFace=10pt%20sans-serif&amp;showXmlButton=true"></script>
+<!--<button ng-click="stop()">stop</button>-->
+<div class="feed"><h3>{{feed.title
+  }}</h3>
+  <hr>
+  <div ng-repeat="entry in feedList">
+     <div class="feed-title"><h4><a href="{{entry.link}}">{{entry.title}}</a> &nbsp <span class="feed-date"><i class="feed-date">{{entry.publishedDate}}</i></span></h4></div>
+    <div class="feed-content">{{entry.content}}</div>
+      <hr>
 
-    </div>
+  </div>
+</div>
 <!-- <br>
 <small><b>Set extremes:</b> {{report}}</small> -->
