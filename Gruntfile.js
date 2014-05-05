@@ -151,7 +151,7 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.app %>/index.html'],
         exclude: [
           'highcharts-more.js',
-          'modules/exporting.src.js'
+          'exporting.src.js'
         ],
         ignorePath: new RegExp('^<%= yeoman.app %>/')
       }
