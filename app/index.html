@@ -23,10 +23,11 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="sidebar-toggle" data-toggle="collapse" data-target=".side-menu">
+
+<!--          <button type="button" class="sidebar-toggle" data-toggle="collapse" data-target=".side-menu">
           <span class="sr-only">Toggle navigation</span>
           <span class="glyphicon glyphicon-list"></span>
-          </button>
+          </button>-->
           <a class="navbar-brand" href="#">PEM<span class="responsive-heading"> - Personal Exchange Monitoring</span></a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-menu">
             <span class="sr-only">Toggle navigation</span>
@@ -57,10 +58,12 @@
         </div>
       </div>
     </div>
-
+    <p class="visible-xs sidebar-botton-line">
+      <button type="button" class="btn btn-sidebar btn-s" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+    </p>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar collapse side-menu">
+      <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview</a></li>
             <li><a href="#">Random</a></li>
@@ -80,7 +83,9 @@
         </div>
 
         <!-- Add your site or application content here -->
-        <div ng-view="" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"></div>
+        <div ng-view="" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        </div>
 
       </div>
     </div>
@@ -107,5 +112,40 @@
     <script src="scripts/services/zoom.js"></script>
     <!-- endbuild -->
 
+    <script type='text/javascript'>
+
+    $(document).ready(function() {
+    $('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+    });
+    });
+
+    </script>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-40413119-1', 'bootply.com');
+    ga('send', 'pageview');
+    </script>
+    <!-- Quantcast Tag -->
+    <script type="text/javascript">
+      var _qevents = _qevents || [];
+
+      (function() {
+        var elem = document.createElement('script');
+        elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+        elem.async = true;
+        elem.type = "text/javascript";
+        var scpt = document.getElementsByTagName('script')[0];
+        scpt.parentNode.insertBefore(elem, scpt);
+      })();
+
+      _qevents.push({
+        qacct:"p-0cXb7ATGU9nz5"
+      });
+    </script>
 </body>
 </html>
