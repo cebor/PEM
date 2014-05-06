@@ -77,13 +77,15 @@ angular.module('stockApp')
       'http://www.welt.de/?service=Rss',
       'http://newsfeed.zeit.de/digital/index'
     ];
+
     var feedIdx = 0;
+
     $interval(function () {
-    feedData(FEEDS[feedIdx]).then(function (data) {
-      $scope.feed = data;
-      console.log(data);
-    });
-      feedIdx=  (feedIdx+1)%FEEDS.length;
+      feedData(FEEDS[feedIdx]).then(function (data) {
+        $scope.feed = data;
+        console.log(data);
+      });
+      feedIdx = (feedIdx+1) % FEEDS.length;
     }, 7000);
 
   });
