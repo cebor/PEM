@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stockApp')
-  .controller('MainCtrl', function ($scope, $filter, StockData, Zoom, FeedData) {
+  .controller('MainCtrl', function ($scope, $filter, StockData, Zoom, feedData) {
 
     var symbols = [
       'YHOO',
@@ -78,7 +78,7 @@ angular.module('stockApp')
       'http://newsfeed.zeit.de/digital/index'
     ];
 
-    FeedData(FEEDS[0], 3).then(function (data) {
+    feedData(FEEDS[0], 3).then(function (data) {
       $scope.feed = data;
       console.log(data);
     });
