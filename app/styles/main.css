@@ -18,6 +18,10 @@ body {
   clear: both;
 }
 
+.feed-link {
+  color: #747474;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,

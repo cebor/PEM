@@ -3,7 +3,7 @@
 angular.module('stockApp')
   .factory('feedData', function ($http, GOOGLE_FEED_API) {
 
-    var NUM = '5';
+    var NUM = '3';
     var VERSION = '1.0';
     var CALLBACK = 'JSON_CALLBACK';
 

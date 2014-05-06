@@ -18,11 +18,11 @@
   <div ng-repeat="entry in feed.entries">
     <div class="feed-title">
       <h4>
-        <a href="{{entry.link}}">{{entry.title}}</a>
-        &nbsp<span class="feed-date"><i class="feed-date">{{entry.publishedDate | date:'yyyy'}}</i></span>
+        <a class="feed-link" href="{{entry.link}}">{{entry.title}}</a>
+        &nbsp<span class="feed-date"><i class="feed-date">{{entry.publishedDate | date:'dd.MM.yyyy @ HH:mm'}}</i></span>
       </h4>
     </div>
-    <div class="feed-content">{{entry.contentSnippet}}</div>
+    <div class="feed-content">{{entry.content | killHTML}}</div>
     <hr>
   </div>
 </div>
