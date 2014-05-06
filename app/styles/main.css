@@ -2,6 +2,20 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: #333;
+}
+
+.feed {
+  color: #fff;
+  padding-left: 15px;
+}
+
+.feed-date {
+  font-size: 12px;
+}
+
+.feed-content {
+  clear: both;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -276,3 +290,5 @@ body {
   right: 5%;
   left: auto
 }
+
+
