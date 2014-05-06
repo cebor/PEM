@@ -6,7 +6,6 @@ angular.module('stockApp')
     var NUM = '5';
     var VERSION = '1.0'
     var CALLBACK = 'JSON_CALLBACK';
-    var FEED_URL = 'http://www.heise.de/newsticker/heise-top-atom.xml';
 
     return function (url, num) {
       return $http.jsonp(
