@@ -12,14 +12,18 @@
 
 <highchart config="chartConfig"></highchart>
 <!--<button ng-click="stop()">stop</button>-->
-<div class="feed"><h3>{{feed.title
-  }}</h3>
+<div class="feed">
+  <h3>{{feed.title}}</h3>
   <hr>
-  <div ng-repeat="entry in feedList">
-     <div class="feed-title"><h4><a href="{{entry.link}}">{{entry.title}}</a> &nbsp <span class="feed-date"><i class="feed-date">{{entry.publishedDate}}</i></span></h4></div>
-    <div class="feed-content">{{entry.content}}</div>
-      <hr>
-
+  <div ng-repeat="entry in feed.entries">
+    <div class="feed-title">
+      <h4>
+        <a href="{{entry.link}}">{{entry.title}}</a>
+        &nbsp<span class="feed-date"><i class="feed-date">{{entry.publishedDate | date:'yyyy'}}</i></span>
+      </h4>
+    </div>
+    <div class="feed-content">{{entry.contentSnippet}}</div>
+    <hr>
   </div>
 </div>
 <!-- <br>
