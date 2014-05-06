@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stockApp')
-  .controller('MainCtrl', function ($scope, $filter, StockData, Zoom, feedData) {
+  .controller('MainCtrl', function ($scope, $filter, StockData, Zoom, feedData, $interval) {
 
     var symbols = [
       'YHOO',
@@ -77,11 +77,13 @@ angular.module('stockApp')
       'http://www.welt.de/?service=Rss',
       'http://newsfeed.zeit.de/digital/index'
     ];
-
-    feedData(FEEDS[0], 3).then(function (data) {
+    var feedIdx = 0;
+    $interval(function () {
+    feedData(FEEDS[feedIdx]).then(function (data) {
       $scope.feed = data;
       console.log(data);
     });
-
+      feedIdx=  (feedIdx+1)%FEEDS.length;
+    }, 7000);
 
   });
