@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: FeedData', function () {
+describe('Service: feedData', function () {
 
   // load the service's module
   beforeEach(module('stockApp'));
 
   // instantiate service
-  var FeedData;
-  beforeEach(inject(function (_FeedData_) {
-    FeedData = _FeedData_;
+  var feedData;
+  beforeEach(inject(function (_feedData_) {
+    feedData = _feedData_;
   }));
 
   it('should do something', function () {
-    expect(!!FeedData).toBe(true);
+    expect(!!feedData).toBe(true);
   });
 
 });

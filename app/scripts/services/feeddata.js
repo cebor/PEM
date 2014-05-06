@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('stockApp')
-  .factory('FeedData', function ($http, GOOGLE_FEED_API, $filter) {
+  .factory('feedData', function ($http, GOOGLE_FEED_API) {
 
     var NUM = '5';
-    var VERSION = '1.0'
+    var VERSION = '1.0';
     var CALLBACK = 'JSON_CALLBACK';
 
     return function (url, num) {
@@ -16,7 +16,7 @@ angular.module('stockApp')
         '&callback=' + CALLBACK
       ).then(function (result) {
         angular.forEach(result.data.responseData.feed.entries, function (value) {
-          value.publishedDate = new Date(Date.parse(value.publishedDate));;
+          value.publishedDate = new Date(Date.parse(value.publishedDate));
         });
 
         return result.data.responseData.feed;
