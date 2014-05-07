@@ -1,30 +1,55 @@
-<!--<carousel interval="5000">
-  <slide active="slide.active">
-    <highchart config="chartConfig"></highchart>
-  </slide>
-  <slide>
-    <p>Slide 2</p>
-  </slide>
-  <slide>
-    <p>Slide 3</p>
-  </slide>
-</carousel>-->
-
-<highchart config="chartConfig"></highchart>
-<!--<button ng-click="stop()">stop</button>-->
-<div class="feed">
-  <h3>{{feed.title}}</h3>
-  <hr>
-  <div ng-repeat="entry in feed.entries">
-    <div class="feed-title">
-      <h4>
-        <a class="feed-link" href="{{entry.link}}">{{entry.title}}</a>
-        &nbsp<span class="feed-date"><i class="feed-date">{{entry.publishedDate | date:'dd.MM.yyyy @ HH:mm'}}</i></span>
-      </h4>
-    </div>
-    <div class="feed-content">{{entry.content | killHTML}}</div>
-    <hr>
+<div class="row row-offcanvas row-offcanvas-left">
+  <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+    <ul class="nav nav-sidebar">
+      <li class="active"><a href="#">Overview</a></li>
+      <li><a href="#">Random</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+      <li><a href="">Precicous metals</a></li>
+      <li><a href="">Google</a></li>
+      <li><a href="">Microsoft</a></li>
+      <li><a href="">Apple</a></li>
+    </ul>
+    <ul class="nav nav-sidebar end-of-sidebar">
+      <li><a href="">MacDonalds</a></li>
+      <li><a href="">Coca Cola</a></li>
+      <li><a href="">Unilever</a></li>
+      <li><a href="">Shell</a></li>
+    </ul>
   </div>
+
+  <!-- Add your site or application content here -->
+  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <!--<carousel interval="5000">
+      <slide active="slide.active">
+        <highchart config="chartConfig"></highchart>
+      </slide>
+      <slide>
+        <p>Slide 2</p>
+      </slide>
+      <slide>
+        <p>Slide 3</p>
+      </slide>
+    </carousel>-->
+
+    <highchart config="chartConfig"></highchart>
+    <!--<button ng-click="stop()">stop</button>-->
+    <div class="feed">
+      <h3>{{feed.title}}</h3>
+      <hr>
+      <div ng-repeat="entry in feed.entries">
+        <div class="feed-title">
+          <h4>
+            <a class="feed-link" href="{{entry.link}}">{{entry.title}}</a>
+            &nbsp<span class="feed-date"><i class="feed-date">{{entry.publishedDate | date:'dd.MM.yyyy @ HH:mm'}}</i></span>
+          </h4>
+        </div>
+        <div class="feed-content">{{entry.content | killHTML}}</div>
+        <hr>
+      </div>
+    </div>
+    <!-- <br>
+    <small><b>Set extremes:</b> {{report}}</small> -->
+  </div>
+
 </div>
-<!-- <br>
-<small><b>Set extremes:</b> {{report}}</small> -->
