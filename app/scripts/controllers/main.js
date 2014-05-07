@@ -32,6 +32,9 @@ angular.module('stockApp')
         },
         navigator: {
           enabled: true
+        },
+        scrollbar : {
+          enabled : false
         }
       },
 
