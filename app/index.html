@@ -24,7 +24,7 @@
       <div class="container-fluid">
         <div class="navbar-header">
 
-<!--          <button type="button" class="sidebar-toggle" data-toggle="collapse" data-target=".side-menu">
+          <!--<button type="button" class="sidebar-toggle" data-toggle="collapse" data-target=".side-menu">
           <span class="sr-only">Toggle navigation</span>
           <span class="glyphicon glyphicon-list"></span>
           </button>-->
@@ -62,32 +62,8 @@
     <p class="visible-xs sidebar-botton-line">
       <button type="button" class="btn btn-sidebar btn-s" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
     </p>
-    <div class="container-fluid">
-      <div class="row row-offcanvas row-offcanvas-left">
-        <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview</a></li>
-            <li><a href="#">Random</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Precicous metals</a></li>
-            <li><a href="">Google</a></li>
-            <li><a href="">Microsoft</a></li>
-            <li><a href="">Apple</a></li>
-          </ul>
-          <ul class="nav nav-sidebar end-of-sidebar">
-            <li><a href="">MacDonalds</a></li>
-            <li><a href="">Coca Cola</a></li>
-            <li><a href="">Unilever</a></li>
-            <li><a href="">Shell</a></li>
-          </ul>
-        </div>
 
-        <!-- Add your site or application content here -->
-        <div ng-view="" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"></div>
-
-      </div>
-    </div>
+    <div class="container-fluid" ng-view=""></div>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
