@@ -18,21 +18,12 @@
     </ul>
   </div>
 
-  <!-- Add your site or application content here -->
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <!--<carousel interval="5000">
-      <slide active="slide.active">
-        <highchart config="chartConfig"></highchart>
+    <carousel>
+      <slide ng-repeat="slide in slides">
+        <highchart id="chart{{$index}}" config="slide.chartConfig"></highchart>
       </slide>
-      <slide>
-        <p>Slide 2</p>
-      </slide>
-      <slide>
-        <p>Slide 3</p>
-      </slide>
-    </carousel>-->
-
-    <highchart config="chartConfig"></highchart>
+    </carousel>
     <!--<button ng-click="stop()">stop</button>-->
     <div class="feed">
       <h3>{{feed.title}}</h3>
