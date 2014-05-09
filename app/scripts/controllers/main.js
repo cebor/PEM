@@ -3,10 +3,15 @@
 angular.module('stockApp')
   .controller('MainCtrl', function ($scope, $filter, StockData, Zoom, feedData, $interval) {
 
-    var symbols = [
+    var symbolsChart1 = [
       'YHOO',
       'MSFT',
       'KO'
+    ];
+
+    var symbolsChart2 = [
+      'GOOGL',
+      'AAPL'
     ];
 
     var RANGE = 6;
@@ -18,13 +23,18 @@ angular.module('stockApp')
     var startDateFiltered = $filter('date')(startDate, 'yyyy-MM-dd');
     var endDateFiltered = $filter('date')(endDate, 'yyyy-MM-dd');
 
-    StockData.get(symbols, startDateFiltered, endDateFiltered).then(function (data) {
-      $scope.chartConfig.series = data;
-      $scope.chartConfig.loading = false;
+    StockData.get(symbolsChart1, startDateFiltered, endDateFiltered).then(function (data) {
+      $scope.slides[0].chartConfig.series = data;
+      $scope.slides[0].chartConfig.loading = false;
+    });
+    StockData.get(symbolsChart2, startDateFiltered, endDateFiltered).then(function (data) {
+      $scope.slides[1].chartConfig.series = data;
+      $scope.slides[1].chartConfig.loading = false;
     });
 
-    // highcharts/highstock config
-    $scope.chartConfig = {
+    var slides = [];
+    var globalChartConfig = function(){
+      return {
       options: {
         chart: {
           type: 'line',
@@ -32,33 +42,23 @@ angular.module('stockApp')
         },
         navigator: {
           enabled: true
-        },
-        scrollbar : {
-          enabled : false
         }
       },
-
-      // xAxis: {
-      //   range: 1 * 30 * 24 * 3600 * 1000,
-      //   events: {
-      //     setExtremes: function (e) {
-      //       $scope.report = 'e.min: ' + e.min + ' | e.max: ' + e.max + ' | e.trigger: ' + e.trigger;
-      //     }
-      //   }
-      // },
-
       rangeSelector: {
         enabled: false
       },
       title: {
         text: 'Stock Data'
       },
-
       series: [],
-
       useHighStocks: true,
       loading: true
-    };
+    }};
+
+    slides.push({text: 'Slide 1', type: 'chart', chartConfig: globalChartConfig()});
+    slides.push({text: 'Slide 2', type: 'chart', chartConfig: globalChartConfig()});
+    $scope.slides = slides;
+
 
     Zoom.start(startDate, endDate, RANGE);
 
@@ -88,7 +88,7 @@ angular.module('stockApp')
         $scope.feed = data;
         console.log(data);
       });
-      feedIdx = (feedIdx+1) % FEEDS.length;
+      feedIdx = (feedIdx + 1) % FEEDS.length;
     }, 7000);
 
   });
