@@ -34,11 +34,15 @@ grunt build
 ```
 
 #### Generator
-- [AngularJS generator docs](https://github.com/yeoman/generator-angular#generators)
+[AngularJS generator docs](https://github.com/yeoman/generator-angular#generators)
 
 Demo
 -----------
-http://gui.stkn.org/
+http://gui.stkn.org
+
+Slides
+-----------
+http://slides.com/cebor/stockticker
 
 
 ***
