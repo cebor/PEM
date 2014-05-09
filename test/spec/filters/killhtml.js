@@ -12,8 +12,8 @@ describe('Filter: killHTML', function () {
   }));
 
   it('should return the input prefixed with "killHTML filter:"', function () {
-    var text = 'angularjs';
-    expect(killHTML(text)).toBe('killHTML filter: ' + text);
+    var html = '<div class="someclass">Test!</div>';
+    expect(killHTML(html)).toBe('Test!');
   });
 
 });
