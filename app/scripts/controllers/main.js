@@ -2,15 +2,16 @@
 
 angular.module('stockApp')
   .controller('MainCtrl', function (
-    $scope,
     $filter,
-    StockData,
-    Zoom,
-    feedData,
     $interval,
-    ChartConfig,
+    $scope,
+    feedData,
     feeds,
-    stockSymbols
+    PieChartConfig,
+    StockChartConfig,
+    StockData,
+    stockSymbols,
+    Zoom
   ) {
 
     /* stock ticker */
@@ -25,8 +26,8 @@ angular.module('stockApp')
     var endDateFiltered = $filter('date')(endDate, 'yyyy-MM-dd');
 
     $scope.slides = [];
-    $scope.slides.push({text: 'Slide 1', type: 'chart', chartConfig: new ChartConfig()});
-    $scope.slides.push({text: 'Slide 2', type: 'chart', chartConfig: new ChartConfig()});
+    $scope.slides.push({text: 'Slide 1', type: 'chart', chartConfig: new StockChartConfig()});
+    $scope.slides.push({text: 'Slide 2', type: 'chart', chartConfig: new StockChartConfig()});
 
     angular.forEach(stockSymbols, function (value, key) {
       StockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
@@ -40,6 +41,12 @@ angular.module('stockApp')
     $scope.stop = function () {
       Zoom.stop();
     };
+
+
+    /* pie */
+
+    $scope.pie = {};
+    $scope.pie.chartConfig = new PieChartConfig();
 
 
     /* news feed */

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stockApp')
-  .value('ChartConfig', function () {
+  .value('StockChartConfig', function () {
     return {
       options: {
         chart: {
