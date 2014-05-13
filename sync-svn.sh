@@ -10,6 +10,7 @@ rsync \
   --exclude "dist" \
   --exclude ".tmp" \
   --exclude "app/bower_components" \
+  --exclude "deploy.sh" \
   --delete \
   -avP . $SVN
 
