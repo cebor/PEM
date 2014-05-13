@@ -6,6 +6,8 @@ angular.module('stockApp')
     $interval,
     $scope,
     chartXAxis,
+    bitcoinData,
+    BitcoinChartConfig,
     feedData,
     feeds,
     PieChartConfig,
@@ -73,6 +75,17 @@ angular.module('stockApp')
       });
       feedIdx = (feedIdx + 1) % feeds.length;
     }, 7000);
+
+
+    /* bitcoins */
+
+    $scope.bitcoin = {};
+    $scope.bitcoin.chartConfig = new BitcoinChartConfig();
+
+    bitcoinData.get().then(function (data) {
+      $scope.bitcoin.chartConfig.series.push(data);
+      $scope.bitcoin.chartConfig.loading = false;
+    });
 
 
     /* common */
