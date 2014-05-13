@@ -44,8 +44,8 @@ angular.module('stockApp')
             this.push([date, price]);
           }, array);
 
-          // highcharts config object
-          var config = {
+          // highcharts serie config object
+          var serie = {
             name: symbol,
             data: array.reverse(),
             tooltip: {
@@ -53,7 +53,7 @@ angular.module('stockApp')
             }
           };
 
-          return config;
+          return serie;
         });
 
       },
