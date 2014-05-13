@@ -5,7 +5,7 @@ angular.module('stockApp')
     $filter,
     $interval,
     $scope,
-    ClockChartConfig,
+    Clock,
     feedData,
     feeds,
     PieChartConfig,
@@ -68,8 +68,7 @@ angular.module('stockApp')
 
     /* clock */
 
-    $scope.clock = {};
-    $scope.clock.clockChartConfig = new ClockChartConfig();
+    Clock.init();
 
 
     /* common */
