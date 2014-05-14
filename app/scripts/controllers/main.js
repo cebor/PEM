@@ -27,17 +27,23 @@ angular.module('stockApp')
     var startDateFiltered = $filter('date')(startDate, 'yyyy-MM-dd');
     var endDateFiltered = $filter('date')(endDate, 'yyyy-MM-dd');
 
-    $scope.slides = [];
-    $scope.slides.push({text: 'Slide 1', type: 'chart', chartConfig: new StockChartConfig()});
-    $scope.slides.push({text: 'Slide 2', type: 'chart', chartConfig: new StockChartConfig()});
+    $scope.slides = [
+      {text: 'Slide 1', type: 'chart', chartConfig: new StockChartConfig()},
+      {text: 'Slide 2', type: 'chart', chartConfig: new StockChartConfig()}
+    ];
+    $scope.titles = [];
 
     angular.forEach(stockSymbols, function (value, key) {
+      $scope.titles.push(value.toString() + ' - ');
       StockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
         $scope.slides[key].chartConfig.series = data;
         $scope.slides[key].chartConfig.xAxis = chartXAxis;
+        $scope.slides[key].chartConfig.title.text = value.join(', ');
         $scope.slides[key].chartConfig.loading = false;
       });
     });
+
+    $scope.titles[$scope.titles.length-1] = $scope.titles[$scope.titles.length-1].slice(0,-2);
 
     Zoom.start(startDate, endDate);
 
