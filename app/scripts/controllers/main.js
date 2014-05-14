@@ -6,7 +6,6 @@ angular.module('stockApp')
     $interval,
     $scope,
     chartXAxis,
-    Clock,
     feedData,
     feeds,
     PieChartConfig,
@@ -72,11 +71,6 @@ angular.module('stockApp')
       });
       feedIdx = (feedIdx + 1) % feeds.length;
     }, 7000);
-
-
-    /* clock */
-
-    Clock.init();
 
 
     /* common */
