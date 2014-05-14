@@ -31,10 +31,10 @@ angular.module('stockApp')
       {text: 'Slide 1', type: 'chart', chartConfig: new StockChartConfig()},
       {text: 'Slide 2', type: 'chart', chartConfig: new StockChartConfig()}
     ];
-    $scope.titles = [];
 
+    var titles = [];
     angular.forEach(stockSymbols, function (value, key) {
-      $scope.titles.push(value.toString() + ' - ');
+      titles.push(value.join(', '));
       StockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
         $scope.slides[key].chartConfig.series = data;
         $scope.slides[key].chartConfig.xAxis = chartXAxis;
@@ -43,7 +43,7 @@ angular.module('stockApp')
       });
     });
 
-    $scope.titles[$scope.titles.length-1] = $scope.titles[$scope.titles.length-1].slice(0,-2);
+    $scope.title = titles.join(' - ');
 
     Zoom.start(startDate, endDate);
 
