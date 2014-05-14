@@ -13,15 +13,16 @@ angular.module('stockApp')
         },
         scrollbar: {
           enabled: false
+        },
+        rangeSelector: {
+          enabled: false
         }
-      },
-      rangeSelector: {
-        enabled: false
       },
       title: {
         text: 'Stock Data'
       },
       series: [],
+      xAxis: {},
       useHighStocks: true,
       loading: true
     };

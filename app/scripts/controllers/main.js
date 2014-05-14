@@ -5,6 +5,7 @@ angular.module('stockApp')
     $filter,
     $interval,
     $scope,
+    chartXAxis,
     Clock,
     feedData,
     feeds,
@@ -33,6 +34,7 @@ angular.module('stockApp')
     angular.forEach(stockSymbols, function (value, key) {
       StockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
         $scope.slides[key].chartConfig.series = data;
+        $scope.slides[key].chartConfig.xAxis = chartXAxis;
         $scope.slides[key].chartConfig.loading = false;
       });
     });
