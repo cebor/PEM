@@ -3,7 +3,7 @@
     <h3 class="panel-title">Stock Ticker</h3>
   </div>
   <div class="panel-body">
-    <carousel interval="15000">
+    <carousel interval="18000">
       <slide ng-repeat="slide in slides" class="row">
         <highchart id="stock{{$index}}" config="slide.chartConfig" class="col-md-7"></highchart>
         <highchart id="pie{{$index}}" config="pie.chartConfig" class="col-md-5"></highchart>
@@ -54,5 +54,5 @@
       </div>
     </div>
   </div>
-  
+
 </div>
