@@ -7,21 +7,21 @@ angular.module('stockApp')
 
     var interval;
 
-    this.start = function (startDate, endDate, range) {
+    this.start = function (startDate, endDate) {
 
       if (!interval) {
 
-        var min = new Date(startDate).getTime() + Math.floor(range / 3) * month;
+        var min = new Date(endDate).getTime() - month;
 
-        chartXAxis.currentMax = min;
+        chartXAxis.currentMin = min;
 
         interval = $interval(function () {
-          chartXAxis.currentMax += month;
+          chartXAxis.currentMin -= month;
 
-          if (chartXAxis.currentMax >= new Date(endDate).getTime()) {
-            chartXAxis.currentMax = min;
+          if (chartXAxis.currentMin <= new Date(startDate).getTime()) {
+            chartXAxis.currentMin = min;
           }
-        }, 5000);
+        }, 3000);
 
       }
 
