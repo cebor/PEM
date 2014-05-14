@@ -37,7 +37,7 @@ angular.module('stockApp')
       });
     });
 
-    //Zoom.start(startDate, endDate, RANGE);
+    Zoom.start(startDate, endDate, RANGE);
 
     $scope.stop = function () {
       Zoom.stop();
