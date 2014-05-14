@@ -6,7 +6,9 @@ angular.module('stockApp')
       replace: true,
       template: '<div></div>',
       restrict: 'E',
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope, element) { // jshint ignore:line
+
+        /* jshint ignore:start */
 
         /**
          * Get the current time
@@ -180,6 +182,8 @@ angular.module('stockApp')
             return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
           }
         });
+
+        /* jshint ignore:end */
 
       }
     };
