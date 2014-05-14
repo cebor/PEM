@@ -23,12 +23,14 @@ angular.module('stockApp')
           timeouts[0] = $timeout(function () {
             intervals[1] = $interval(function () {
               if (tmpDate.setDate(tmpDate.getDate() + ZOOM_IN_SPEED) <= firstDate) {
+
                 Highcharts.charts[0].xAxis[0].setExtremes(
                   tmpDate.getTime(),
                   endDate.getTime(),
                   true,
                   false
                 );
+
               } else {
                 tmpDate = firstDate;
                 $interval.cancel(intervals[1]);
