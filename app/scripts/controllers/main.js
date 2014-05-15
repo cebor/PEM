@@ -5,7 +5,7 @@ angular.module('stockApp')
     $filter,
     $interval,
     $scope,
-    Clock,
+    chartXAxis,
     feedData,
     feeds,
     PieChartConfig,
@@ -26,18 +26,25 @@ angular.module('stockApp')
     var startDateFiltered = $filter('date')(startDate, 'yyyy-MM-dd');
     var endDateFiltered = $filter('date')(endDate, 'yyyy-MM-dd');
 
-    $scope.slides = [];
-    $scope.slides.push({text: 'Slide 1', type: 'chart', chartConfig: new StockChartConfig()});
-    $scope.slides.push({text: 'Slide 2', type: 'chart', chartConfig: new StockChartConfig()});
+    $scope.slides = [
+      {text: 'Slide 1', type: 'chart', chartConfig: new StockChartConfig()},
+      {text: 'Slide 2', type: 'chart', chartConfig: new StockChartConfig()}
+    ];
 
+    var titles = [];
     angular.forEach(stockSymbols, function (value, key) {
+      titles.push(value.join(', '));
       StockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
         $scope.slides[key].chartConfig.series = data;
+        $scope.slides[key].chartConfig.xAxis = chartXAxis;
+        $scope.slides[key].chartConfig.title.text = value.join(', ');
         $scope.slides[key].chartConfig.loading = false;
       });
     });
 
-    //Zoom.start(startDate, endDate, RANGE);
+    $scope.title = titles.join(' - ');
+
+    Zoom.start(startDate, endDate);
 
     $scope.stop = function () {
       Zoom.stop();
@@ -64,11 +71,6 @@ angular.module('stockApp')
       });
       feedIdx = (feedIdx + 1) % feeds.length;
     }, 7000);
-
-
-    /* clock */
-
-    Clock.init();
 
 
     /* common */
