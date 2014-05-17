@@ -6,8 +6,7 @@ angular.module('stockApp')
       replace: true,
       restrict: 'E',
       scope: {
-        slides: '=',
-        title: '='
+        config: '='
       },
       templateUrl: 'views/stockslider.html',
     };
