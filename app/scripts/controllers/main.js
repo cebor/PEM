@@ -28,6 +28,8 @@ angular.module('stockApp')
 
     $scope.stockSliderConfig = {
       title: '',
+      startDate: startDate,
+      endDate: endDate,
       slides: [
         {
           text: 'Slide 1',
@@ -56,13 +58,7 @@ angular.module('stockApp')
     });
 
     $scope.stockSliderConfig.title = titles.join(' - ');
-
-    Zoom.start(startDate, endDate);
-
-    $scope.stop = function () {
-      Zoom.stop();
-    };
-
+    
 
     /* news feed */
 
