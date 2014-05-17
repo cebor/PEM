@@ -22,6 +22,11 @@ angular.module('stockApp')
         scope.zoomStop = function () {
           Zoom.stop();
         };
-      }
+      },
+      controller: ['$scope', function ($scope) {
+        $scope.$on('$destroy', function () {
+          Zoom.stop();
+        });
+      }]
     };
   });

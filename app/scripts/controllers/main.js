@@ -11,8 +11,7 @@ angular.module('stockApp')
     PieChartConfig,
     StockChartConfig,
     StockData,
-    stockSymbols,
-    Zoom
+    stockSymbols
   ) {
 
     /* stock ticker */
@@ -58,7 +57,7 @@ angular.module('stockApp')
     });
 
     $scope.stockSliderConfig.title = titles.join(' - ');
-    
+
 
     /* news feed */
 
@@ -80,7 +79,6 @@ angular.module('stockApp')
 
     // stop intervals on $scope destroy (route change)
     $scope.$on('$destroy', function () {
-      Zoom.stop();
       $interval.cancel(feedInterval);
     });
 
