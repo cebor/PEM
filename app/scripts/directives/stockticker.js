@@ -8,6 +8,6 @@ angular.module('stockApp')
       scope: {
         config: '='
       },
-      templateUrl: 'views/stockslider.html',
+      templateUrl: 'views/stockticker.html'
     };
   });
