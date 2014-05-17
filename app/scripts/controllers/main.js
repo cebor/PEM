@@ -26,35 +26,42 @@ angular.module('stockApp')
     var startDateFiltered = $filter('date')(startDate, 'yyyy-MM-dd');
     var endDateFiltered = $filter('date')(endDate, 'yyyy-MM-dd');
 
-    $scope.slides = [
-      {text: 'Slide 1', type: 'chart', chartConfig: new StockChartConfig()},
-      {text: 'Slide 2', type: 'chart', chartConfig: new StockChartConfig()}
-    ];
+    $scope.slides = {
+      title: '',
+      entries: [
+        {
+          text: 'Slide 1',
+          type: 'chart',
+          stockChartConfig: new StockChartConfig(),
+          pieChartConfig: new PieChartConfig()
+        },
+        {
+          text: 'Slide 2',
+          type: 'chart',
+          stockChartConfig: new StockChartConfig(),
+          pieChartConfig: new PieChartConfig()
+        }
+      ]
+    };
 
     var titles = [];
     angular.forEach(stockSymbols, function (value, key) {
       titles.push(value.join(', '));
       StockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
-        $scope.slides[key].chartConfig.series = data;
-        $scope.slides[key].chartConfig.xAxis = chartXAxis;
-        $scope.slides[key].chartConfig.title.text = value.join(', ');
-        $scope.slides[key].chartConfig.loading = false;
+        $scope.slides.entries[key].stockChartConfig.series = data;
+        $scope.slides.entries[key].stockChartConfig.xAxis = chartXAxis;
+        $scope.slides.entries[key].stockChartConfig.title.text = value.join(', ');
+        $scope.slides.entries[key].stockChartConfig.loading = false;
       });
     });
 
-    $scope.title = titles.join(' - ');
+    $scope.slides.title = titles.join(' - ');
 
     Zoom.start(startDate, endDate);
 
     $scope.stop = function () {
       Zoom.stop();
     };
-
-
-    /* pie */
-
-    $scope.pie = {};
-    $scope.pie.chartConfig = new PieChartConfig();
 
 
     /* news feed */
