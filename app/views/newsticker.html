@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{feed.title}}</h3>
+  </div>
+  <div class="panel-body">
+    <div ng-repeat="entry in feed.entries">
+      <h4>
+        <a href="{{entry.link}}">{{entry.title}}</a>
+        <small>{{entry.publishedDate | date:'dd.MM.yyyy HH:mm'}}</small>
+      </h4>
+      {{entry.content | killHTML}}
+      <hr ng-hide="$last">
+    </div>
+  </div>
+</div>
