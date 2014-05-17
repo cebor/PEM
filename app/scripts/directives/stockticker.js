@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stockApp')
-  .directive('stockSlider', function () {
+  .directive('stockTicker', function () {
     return {
       replace: true,
       restrict: 'E',
