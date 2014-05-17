@@ -29,6 +29,7 @@ angular.module('stockApp')
 
     this.stop = function () {
       $interval.cancel(interval);
+      interval = undefined;
     };
 
   });

@@ -5,8 +5,18 @@
   <div class="panel-body">
     <carousel interval="18000">
       <slide ng-repeat="slide in config.slides" class="row">
-        <highchart id="stock{{$index}}" config="slide.stockChartConfig" class="col-md-7"></highchart>
-        <highchart id="pie{{$index}}" config="slide.pieChartConfig" class="col-md-5"></highchart>
+        <highchart
+          id="stock{{$index}}"
+          config="slide.stockChartConfig"
+          ng-mouseover="zoomStop()"
+          ng-mouseleave="zoomStart()"
+          class="col-md-7">
+        </highchart>
+        <highchart
+          id="pie{{$index}}"
+          config="slide.pieChartConfig"
+          class="col-md-5">
+        </highchart>
       </slide>
     </carousel>
   </div>
