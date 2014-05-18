@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stockApp')
-  .directive('stockTicker', function (Zoom) {
+  .directive('stockTicker', function () {
     return {
       replace: true,
       restrict: 'E',
@@ -9,21 +9,22 @@ angular.module('stockApp')
         config: '='
       },
       templateUrl: 'views/stockticker.html',
-      link: function postLink(scope) {
-        var startDate = scope.config.startDate;
-        var endDate = scope.config.endDate;
+      controller: ['$scope', '$timeout', 'Zoom', function ($scope, $timeout, Zoom) {
+        var startDate = $scope.config.startDate;
+        var endDate = $scope.config.endDate;
 
         Zoom.start(startDate, endDate);
 
-        scope.zoomStart = function () {
-          Zoom.start(startDate, endDate);
+        $scope.zoomStart = function () {
+          $timeout(function () {
+            Zoom.start(startDate, endDate);
+          }, 3000);
         };
 
-        scope.zoomStop = function () {
+        $scope.zoomStop = function () {
           Zoom.stop();
         };
-      },
-      controller: ['$scope', function ($scope) {
+
         $scope.$on('$destroy', function () {
           Zoom.stop();
         });
