@@ -10,7 +10,7 @@ angular.module('stockApp')
     feeds,
     PieChartConfig,
     StockChartConfig,
-    StockData,
+    stockData,
     stockSymbols
   ) {
 
@@ -48,7 +48,7 @@ angular.module('stockApp')
     var titles = [];
     angular.forEach(stockSymbols, function (value, key) {
       titles.push(value.join(', '));
-      StockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
+      stockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
         $scope.stockSliderConfig.slides[key].stockChartConfig.series = data;
         $scope.stockSliderConfig.slides[key].stockChartConfig.xAxis = chartXAxis;
         $scope.stockSliderConfig.slides[key].stockChartConfig.title.text = value.join(', ');
