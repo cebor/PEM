@@ -9,7 +9,7 @@ angular.module('stockApp')
           zoomType: 'x'
         },
         title: {
-          text: 'Bitcoin Data'
+          text: false
         },
         scrollbar: {
           enabled: false
