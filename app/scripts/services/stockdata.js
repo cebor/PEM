@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('stockApp')
-  .factory('StockData', function ($q, $http, YAHOO_API) {
+  .factory('stockData', function ($q, $http, YAHOO_API) {
 
-    var StockData = {
+    var stockData = {
 
       /**
        * get data from yahoo api
@@ -79,6 +79,6 @@ angular.module('stockApp')
 
     };
 
-    return StockData;
+    return stockData;
 
   });
