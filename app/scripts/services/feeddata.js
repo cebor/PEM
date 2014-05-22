@@ -16,7 +16,7 @@ angular.module('stockApp')
         '&callback=' + CALLBACK
       ).then(function (result) {
         angular.forEach(result.data.responseData.feed.entries, function (value) {
-          value.publishedDate = new Date(Date.parse(value.publishedDate));
+          value.publishedDate = Date.parse(value.publishedDate);
         });
 
         return result.data.responseData.feed;
