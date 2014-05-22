@@ -25,7 +25,7 @@ angular.module('stockApp')
 
           angular.forEach(yql.data.query.results.row, function (value) {
             if (i++ > 0) {
-              var date = new Date(value.col0.replace(/-/g, '/')).getTime();
+              var date = Date.parse(value.col0.replace(/-/g, '/'));
               var price = parseFloat(value.col3);
 
               this.push([date, price]);

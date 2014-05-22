@@ -38,7 +38,7 @@ angular.module('stockApp')
 
           // parse date and average stock price
           angular.forEach(yql.data.query.results.quote, function(value) {
-            var date = new Date(value.Date).getTime();
+            var date = Date.parse(value.Date);
             var price = parseFloat(value.Adj_Close); // jshint ignore:line
 
             this.push([date, price]);
