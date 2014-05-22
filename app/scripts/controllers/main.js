@@ -55,6 +55,8 @@ angular.module('stockApp')
         $scope.stockSliderConfig.slides[key].stockChartConfig.xAxis = chartXAxis;
         $scope.stockSliderConfig.slides[key].stockChartConfig.title.text = value.join(', ');
         $scope.stockSliderConfig.slides[key].stockChartConfig.loading = false;
+        $scope.stockSliderConfig.slides[key].pieChartConfig.series.push(stockData.getPie(data));
+        $scope.stockSliderConfig.slides[key].pieChartConfig.loading = false;
       });
     });
 
