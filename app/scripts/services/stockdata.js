@@ -75,47 +75,35 @@ angular.module('stockApp')
 
         return $q.all(promises);
 
-      }
+      },
 
-        /**
-         * get multiple data for piechart
-         * calculate relations
-         * @param   symbols, date of today
-         * @return  highcharts json objects array
-         */
+      /**
+       * get multiple data for piechart
+       * calculate relations
+       * @param   symbols, date of today
+       * @return  highcharts json objects array
+       */
+       getPie: function (data) {
+         var array = [];
+
+         angular.forEach(data, function (value) {
+           var name = value.name;
+           // get latest price
+           var price = value.data[value.data.length - 1][1];
+
+           this.push([name, price]);
+         }, array);
+
+         var serie = {
+           type: 'pie',
+           name: 'Stock share',
+           data: array
+         };
+
+         return serie;
+       }
 
     };
-
-     function getPie (symbols, endDate) {
-
-         var placeHolder = this;
-         var totalValue = 0;
-         var relations = [];
-         var pieData = [];
-
-         angular.forEach(symbols, function (value, key) {
-             pieData[key] = placeHolder.getOne(value, endDate);
-         });
-
-         // build sum of all values
-
-         angular.forEach(pieData)
-            {
-                totalValue = totalValue + pieData[key];
-            };
-
-         // calculate relations
-
-         angular.forEach(pieData)
-            {
-             for (var i = 0; i <= pieData.length; i++) {
-                 relations[i] = totalValue/(pieData[key]/100);
-             }
-            };
-
-         return $q.all(relations);
-
-     }
 
     return stockData;
 
