@@ -19,6 +19,7 @@ angular.module('stockApp')
         }
       },
       series: [],
+      xAxis: {},
       useHighStocks: true,
       loading: true
     };

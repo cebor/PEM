@@ -86,6 +86,8 @@ angular.module('stockApp')
 
     bitcoinData.get().then(function (data) {
       $scope.bitcoin.chartConfig.series.push(data);
+      var year = 365 * 24 * 3600 * 1000;
+      $scope.bitcoin.chartConfig.xAxis.currentMin = endDate.getTime() - year;
       $scope.bitcoin.chartConfig.loading = false;
     });
 
