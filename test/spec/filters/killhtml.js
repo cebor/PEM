@@ -12,7 +12,7 @@ describe('Filter: killHTML', function () {
   }));
 
   it('should return the input prefixed with "killHTML filter:"', function () {
-    var html = '<div class="someclass">Test!</div>';
+    var html = '<div class="someclass">&quot;Test!&QUOT;</div>';
     expect(killHTML(html)).toBe('Test!');
   });
 
