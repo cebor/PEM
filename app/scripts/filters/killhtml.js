@@ -3,6 +3,9 @@
 angular.module('stockApp')
   .filter('killHTML', function () {
     return function (input) {
-      return input.replace(/<(?:.|\n)*?>/gm, '');
+      input = input.replace(/<(?:.|\n)*?>/gm, '');
+      input = input.replace(/&[a-z]+;/gi, '');
+
+      return input;
     };
   });
