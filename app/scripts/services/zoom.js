@@ -8,9 +8,7 @@ angular.module('stockApp')
     var interval;
 
     this.start = function (startDate, endDate) {
-
       if (!interval) {
-
         var min = new Date(endDate).getTime() - month;
 
         chartXAxis.currentMin = min;
@@ -22,13 +20,14 @@ angular.module('stockApp')
             chartXAxis.currentMin = min;
           }
         }, 3000);
-
       }
-
     };
 
     this.stop = function () {
-      $interval.cancel(interval);
+      if (interval) {
+        $interval.cancel(interval);
+        interval = undefined;
+      }
     };
 
   });

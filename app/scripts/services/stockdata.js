@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('stockApp')
-  .factory('StockData', function ($q, $http, YAHOO_API) {
+  .factory('stockData', function ($q, $http, YAHOO_API) {
 
-    var StockData = {
+    var stockData = {
 
       /**
        * get data from yahoo api
@@ -38,14 +38,14 @@ angular.module('stockApp')
 
           // parse date and average stock price
           angular.forEach(yql.data.query.results.quote, function(value) {
-            var date = new Date(value.Date).getTime();
+            var date = Date.parse(value.Date);
             var price = parseFloat(value.Adj_Close); // jshint ignore:line
 
             this.push([date, price]);
           }, array);
 
-          // highcharts config object
-          var config = {
+          // highcharts serie config object
+          var serie = {
             name: symbol,
             data: array.reverse(),
             tooltip: {
@@ -53,7 +53,7 @@ angular.module('stockApp')
             }
           };
 
-          return config;
+          return serie;
         });
 
       },
@@ -75,10 +75,36 @@ angular.module('stockApp')
 
         return $q.all(promises);
 
-      }
+      },
+
+      /**
+       * get multiple data for piechart
+       * calculate relations
+       * @param   symbols, date of today
+       * @return  highcharts json objects array
+       */
+       getPie: function (data) {
+         var array = [];
+
+         angular.forEach(data, function (value) {
+           var name = value.name;
+           // get latest price
+           var price = value.data[value.data.length - 1][1];
+
+           this.push([name, price]);
+         }, array);
+
+         var serie = {
+           type: 'pie',
+           name: 'Stock share',
+           data: array
+         };
+
+         return serie;
+       }
 
     };
 
-    return StockData;
+    return stockData;
 
   });

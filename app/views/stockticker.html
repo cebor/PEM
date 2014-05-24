@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">STOCK TICKER: &nbsp; {{config.title}}</h3>
+  </div>
+  <div class="panel-body">
+    <carousel interval="18000">
+      <slide ng-repeat="slide in config.slides" class="row">
+        <highchart
+          id="stock{{$index}}"
+          config="slide.stockChartConfig"
+          ng-mouseover="zoomStop()"
+          ng-mouseleave="zoomStart()"
+          class="col-md-7">
+        </highchart>
+        <highchart
+          id="pie{{$index}}"
+          config="slide.pieChartConfig"
+          class="col-md-5">
+        </highchart>
+      </slide>
+    </carousel>
+  </div>
+</div>

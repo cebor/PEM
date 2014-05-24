@@ -1,22 +1,10 @@
 <!-- Stock Ticker -->
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">STOCK TICKER: &nbsp; {{title}}</h3>
-  </div>
-  <div class="panel-body">
-    <carousel interval="18000">
-      <slide ng-repeat="slide in slides" class="row">
-        <highchart id="stock{{$index}}" config="slide.chartConfig" class="col-md-7"></highchart>
-        <highchart id="pie{{$index}}" config="pie.chartConfig" class="col-md-5"></highchart>
-      </slide>
-    </carousel>
-  </div>
-</div>
+<stock-ticker config="stockSliderConfig"></stock-ticker>
 
 <div class="row">
 
   <!-- Widgets -->
-  <div class="col-lg-4 text-center">
+  <div class="col-lg-3 text-center">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Widgets</h3>
@@ -29,34 +17,20 @@
   </div>
 
   <!-- Bitcoin Ticker -->
-  <div class="col-lg-4 text-center">
+  <div class="col-lg-5 text-center">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Bitcoin</h3>
       </div>
       <div class="panel-body">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum eaque magnam optio, blanditiis numquam assumenda nostrum ad inventore, animi quas corporis rerum fugit? Esse, nisi, minima. Blanditiis natus voluptatum qui, quas ullam nam, doloribus neque unde, maiores quia quo minima alias omnis! Repudiandae architecto, pariatur deleniti nesciunt debitis ullam voluptatum, quidem fuga assumenda, dolorem magni commodi mollitia iste consequuntur, eum expedita. Quia nobis voluptate accusantium commodi possimus ipsa, vitae, consequuntur laborum, eius dicta aliquam itaque eveniet veniam nam inventore. Quaerat eius, reiciendis at dolor repellat eligendi ipsam! Facere natus reiciendis aperiam sint iusto consequatur eligendi nesciunt impedit distinctio, laborum dolorem ullam laudantium officiis error enim recusandae nam eaque eum amet facilis quam perspiciatis illum dicta? Ut ratione debitis eius porro facilis autem nisi atque sed, perspiciatis, molestiae voluptates velit ipsum pariatur minima deleniti a, fugit repudiandae doloribus adipisci totam voluptatem vel! Sequi cupiditate laborum modi recusandae atque, nam iure voluptatem. Porro facere hic ad, earum dolorem illum nihil aspernatur impedit minima at itaque iste eveniet eligendi eum repellendus, fugit expedita ab! Sapiente doloremque sint molestiae nihil illo, veniam minus. Odit, quibusdam nisi ipsam voluptatum commodi minima quidem id illum nesciunt dicta velit voluptate aut, delectus impedit labore non maxime explicabo?
+        <highchart id="bitcoin" config="bitcoin.chartConfig"></highchart>
       </div>
     </div>
   </div>
 
   <!-- News Ticker -->
   <div class="col-lg-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{feed.title}}</h3>
-      </div>
-      <div class="panel-body">
-        <div ng-repeat="entry in feed.entries">
-          <h4>
-            <a class="feed-link" href="{{entry.link}}">{{entry.title}}</a>
-            <small>{{entry.publishedDate | date:'dd.MM.yyyy HH:mm'}}</small>
-          </h4>
-          {{entry.content | killHTML}}
-          <hr ng-hide="$last">
-        </div>
-      </div>
-    </div>
+    <news-ticker feed="feed"></news-ticker>
   </div>
 
 </div><!-- /row -->

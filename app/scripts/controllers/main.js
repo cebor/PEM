@@ -6,13 +6,14 @@ angular.module('stockApp')
     $interval,
     $scope,
     chartXAxis,
+    bitcoinData,
+    BitcoinChartConfig,
     feedData,
     feeds,
     PieChartConfig,
     StockChartConfig,
-    StockData,
-    stockSymbols,
-    Zoom
+    stockData,
+    stockSymbols
   ) {
 
     /* stock ticker */
@@ -26,35 +27,40 @@ angular.module('stockApp')
     var startDateFiltered = $filter('date')(startDate, 'yyyy-MM-dd');
     var endDateFiltered = $filter('date')(endDate, 'yyyy-MM-dd');
 
-    $scope.slides = [
-      {text: 'Slide 1', type: 'chart', chartConfig: new StockChartConfig()},
-      {text: 'Slide 2', type: 'chart', chartConfig: new StockChartConfig()}
-    ];
+    $scope.stockSliderConfig = {
+      title: '',
+      startDate: startDate,
+      endDate: endDate,
+      slides: [
+        {
+          text: 'Slide 1',
+          type: 'chart',
+          stockChartConfig: new StockChartConfig(),
+          pieChartConfig: new PieChartConfig()
+        },
+        {
+          text: 'Slide 2',
+          type: 'chart',
+          stockChartConfig: new StockChartConfig(),
+          pieChartConfig: new PieChartConfig()
+        }
+      ]
+    };
 
     var titles = [];
     angular.forEach(stockSymbols, function (value, key) {
       titles.push(value.join(', '));
-      StockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
-        $scope.slides[key].chartConfig.series = data;
-        $scope.slides[key].chartConfig.xAxis = chartXAxis;
-        $scope.slides[key].chartConfig.title.text = value.join(', ');
-        $scope.slides[key].chartConfig.loading = false;
+      stockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
+        $scope.stockSliderConfig.slides[key].stockChartConfig.series = data;
+        $scope.stockSliderConfig.slides[key].stockChartConfig.xAxis = chartXAxis;
+        $scope.stockSliderConfig.slides[key].stockChartConfig.title.text = value.join(', ');
+        $scope.stockSliderConfig.slides[key].stockChartConfig.loading = false;
+        $scope.stockSliderConfig.slides[key].pieChartConfig.series.push(stockData.getPie(data));
+        $scope.stockSliderConfig.slides[key].pieChartConfig.loading = false;
       });
     });
 
-    $scope.title = titles.join(' - ');
-
-    Zoom.start(startDate, endDate);
-
-    $scope.stop = function () {
-      Zoom.stop();
-    };
-
-
-    /* pie */
-
-    $scope.pie = {};
-    $scope.pie.chartConfig = new PieChartConfig();
+    $scope.stockSliderConfig.title = titles.join(' - ');
 
 
     /* news feed */
@@ -73,11 +79,23 @@ angular.module('stockApp')
     }, 7000);
 
 
+    /* bitcoins */
+
+    $scope.bitcoin = {};
+    $scope.bitcoin.chartConfig = new BitcoinChartConfig();
+
+    bitcoinData.get().then(function (data) {
+      $scope.bitcoin.chartConfig.series.push(data);
+      var year = 365 * 24 * 3600 * 1000;
+      $scope.bitcoin.chartConfig.xAxis.currentMin = new Date().getTime() - year;
+      $scope.bitcoin.chartConfig.loading = false;
+    });
+
+
     /* common */
 
     // stop intervals on $scope destroy (route change)
     $scope.$on('$destroy', function () {
-      Zoom.stop();
       $interval.cancel(feedInterval);
     });
 

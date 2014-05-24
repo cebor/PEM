@@ -10,3 +10,5 @@ before_script:
   - 'npm install -g bower grunt-cli'
   - 'npm install karma-firefox-launcher karma-phantomjs-launcher --save-dev'
   - 'bower install'
+after_script:
+  - 'grunt build'
