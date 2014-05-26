@@ -6,7 +6,7 @@ angular.module('stockApp')
       replace: true,
       template: '<div></div>',
       restrict: 'E',
-      link: function postLink(scope, element) { // jshint ignore:line
+      link: function (scope, element) { // jshint ignore:line
 
         /* jshint ignore:start */
 

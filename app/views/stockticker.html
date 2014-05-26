@@ -1,10 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">STOCK TICKER: &nbsp; {{config.title}}</h3>
+    <h3 class="panel-title">STOCK TICKER: &nbsp; {{title}}</h3>
   </div>
   <div class="panel-body">
     <carousel interval="18000">
-      <slide ng-repeat="slide in config.slides" class="row">
+      <slide ng-repeat="slide in slides" class="row">
         <highchart
           id="stock{{$index}}"
           config="slide.stockChartConfig"

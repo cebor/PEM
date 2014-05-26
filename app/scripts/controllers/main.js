@@ -2,17 +2,12 @@
 
 angular.module('stockApp')
   .controller('MainCtrl', function (
-    $filter,
     $interval,
     $scope,
-    chartXAxis,
     bitcoinData,
     BitcoinChartConfig,
     feedData,
     feeds,
-    PieChartConfig,
-    StockChartConfig,
-    stockData,
     stockSymbols
   ) {
 
@@ -24,42 +19,11 @@ angular.module('stockApp')
     var endDate = new Date();
     startDate.setMonth(startDate.getMonth() - RANGE);
 
-    var stockStartDate = $filter('date')(startDate, 'yyyy-MM-dd');
-    var stockEndDate = $filter('date')(endDate, 'yyyy-MM-dd');
-
-    $scope.stockSliderConfig = {
+    $scope.stockTickerConfig = {
+      symbols: stockSymbols,
       startDate: startDate,
-      endDate: endDate,
-      slides: []
+      endDate: endDate
     };
-
-    var stockTitles = [];
-
-    angular.forEach(stockSymbols, function (value, key) {
-
-      stockTitles.push(value.join(', '));
-
-      var slide = {
-        stockChartConfig: new StockChartConfig(),
-        pieChartConfig: new PieChartConfig()
-      };
-
-      this.slides[key] = slide;
-
-      var that = this;
-
-      stockData.get(value, stockStartDate, stockEndDate).then(function (data) {
-        that.slides[key].stockChartConfig.series = data;
-        that.slides[key].stockChartConfig.xAxis = chartXAxis;
-        that.slides[key].stockChartConfig.title.text = value.join(', ');
-        that.slides[key].stockChartConfig.loading = false;
-        that.slides[key].pieChartConfig.series.push(stockData.getPie(data));
-        that.slides[key].pieChartConfig.loading = false;
-      });
-
-    }, $scope.stockSliderConfig);
-
-    $scope.stockSliderConfig.title = stockTitles.join(' - ');
 
 
     /* news feed */
