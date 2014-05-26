@@ -31,30 +31,20 @@ angular.module('stockApp')
       title: '',
       startDate: startDate,
       endDate: endDate,
-      slides: [
-        {
-          text: 'Slide 1',
-          type: 'chart',
-          stockChartConfig: new StockChartConfig(),
-          pieChartConfig: new PieChartConfig()
-        },
-        {
-          text: 'Slide 2',
-          type: 'chart',
-          stockChartConfig: new StockChartConfig(),
-          pieChartConfig: new PieChartConfig()
-        }
-      ]
+      slides: []
     };
 
     var titles = [];
     angular.forEach(stockSymbols, function (value, key) {
       titles.push(value.join(', '));
       stockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
+        $scope.stockSliderConfig.slides[key] = {};
+        $scope.stockSliderConfig.slides[key].stockChartConfig = new StockChartConfig();
         $scope.stockSliderConfig.slides[key].stockChartConfig.series = data;
         $scope.stockSliderConfig.slides[key].stockChartConfig.xAxis = chartXAxis;
         $scope.stockSliderConfig.slides[key].stockChartConfig.title.text = value.join(', ');
         $scope.stockSliderConfig.slides[key].stockChartConfig.loading = false;
+        $scope.stockSliderConfig.slides[key].pieChartConfig = new PieChartConfig();
         $scope.stockSliderConfig.slides[key].pieChartConfig.series.push(stockData.getPie(data));
         $scope.stockSliderConfig.slides[key].pieChartConfig.loading = false;
       });
