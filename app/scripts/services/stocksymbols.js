@@ -5,10 +5,19 @@ angular.module('stockApp')
     [
       'YHOO',
       'MSFT',
-      'KO'
+      'KO',
+      'UNIA.AS'
     ],
     [
       'GOOGL',
-      'AAPL'
+      'AAPL',
+      'NSU.DE',
+      'SSU.DE'
+    ],
+    [
+      'NTDOF',
+      'BMW.DE',
+      'SIE.DE',
+      'DAI.DE'
     ]
   ]);
