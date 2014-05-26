@@ -24,33 +24,42 @@ angular.module('stockApp')
     var endDate = new Date();
     startDate.setMonth(startDate.getMonth() - RANGE);
 
-    var startDateFiltered = $filter('date')(startDate, 'yyyy-MM-dd');
-    var endDateFiltered = $filter('date')(endDate, 'yyyy-MM-dd');
+    var stockStartDate = $filter('date')(startDate, 'yyyy-MM-dd');
+    var stockEndDate = $filter('date')(endDate, 'yyyy-MM-dd');
 
     $scope.stockSliderConfig = {
-      title: '',
       startDate: startDate,
       endDate: endDate,
       slides: []
     };
 
-    var titles = [];
-    angular.forEach(stockSymbols, function (value, key) {
-      titles.push(value.join(', '));
-      stockData.get(value, startDateFiltered, endDateFiltered).then(function (data) {
-        $scope.stockSliderConfig.slides[key] = {};
-        $scope.stockSliderConfig.slides[key].stockChartConfig = new StockChartConfig();
-        $scope.stockSliderConfig.slides[key].stockChartConfig.series = data;
-        $scope.stockSliderConfig.slides[key].stockChartConfig.xAxis = chartXAxis;
-        $scope.stockSliderConfig.slides[key].stockChartConfig.title.text = value.join(', ');
-        $scope.stockSliderConfig.slides[key].stockChartConfig.loading = false;
-        $scope.stockSliderConfig.slides[key].pieChartConfig = new PieChartConfig();
-        $scope.stockSliderConfig.slides[key].pieChartConfig.series.push(stockData.getPie(data));
-        $scope.stockSliderConfig.slides[key].pieChartConfig.loading = false;
-      });
-    });
+    var stockTitles = [];
 
-    $scope.stockSliderConfig.title = titles.join(' - ');
+    angular.forEach(stockSymbols, function (value, key) {
+
+      stockTitles.push(value.join(', '));
+
+      var slide = {
+        stockChartConfig: new StockChartConfig(),
+        pieChartConfig: new PieChartConfig()
+      };
+
+      this.slides[key] = slide;
+
+      var that = this;
+
+      stockData.get(value, stockStartDate, stockEndDate).then(function (data) {
+        that.slides[key].stockChartConfig.series = data;
+        that.slides[key].stockChartConfig.xAxis = chartXAxis;
+        that.slides[key].stockChartConfig.title.text = value.join(', ');
+        that.slides[key].stockChartConfig.loading = false;
+        that.slides[key].pieChartConfig.series.push(stockData.getPie(data));
+        that.slides[key].pieChartConfig.loading = false;
+      });
+
+    }, $scope.stockSliderConfig);
+
+    $scope.stockSliderConfig.title = stockTitles.join(' - ');
 
 
     /* news feed */
