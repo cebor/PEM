@@ -7,7 +7,6 @@ angular.module('stockApp')
       link: function postLink(scope, element, attrs) {
         var time = new Date();
         console.log(time.getHours());
-        time.setHours(13);
         var sunset = 6;
         var sundown = 21;
         if(time.getMonth() < 4 && time.getMonth() > 9){
