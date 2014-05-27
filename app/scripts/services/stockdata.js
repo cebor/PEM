@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stockApp')
-  .factory('stockData', function ($q, $http, YAHOO_API) {
+  .factory('stockData', function ($q,$filter, $http, YAHOO_API) {
 
     var stockData = {
 
@@ -88,6 +88,9 @@ angular.module('stockApp')
 
          angular.forEach(data, function (value) {
            var name = value.name;
+           console.log(name);
+           var name = $filter('symbolResolver')(name);
+           console.log(name);
            // get latest price
            var price = value.data[value.data.length - 1][1];
 
