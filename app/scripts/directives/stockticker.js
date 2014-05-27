@@ -57,7 +57,7 @@ angular.module('stockApp')
 
         }, scope.slides);
 
-        scope.title = titles.join(' - ');
+        scope.title = titles.join(' | ');
 
 
         /* zoom */
