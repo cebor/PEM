@@ -87,8 +87,7 @@ angular.module('stockApp')
          var array = [];
 
          angular.forEach(data, function (value) {
-           var name = value.name;
-           var name = $filter('symbolResolver')(name);
+           var name = $filter('symbolResolver')(value.name);
            // get latest price
            var price = value.data[value.data.length - 1][1];
 
