@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stockApp')
-  .factory('stockData', function ($q,$filter, $http, YAHOO_API) {
+  .factory('stockData', function ($q, $filter, $http, YAHOO_API) {
 
     var stockData = {
 
