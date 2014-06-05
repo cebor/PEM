@@ -6,9 +6,8 @@ angular.module('stockApp')
       replace: true,
       template: '<div></div>',
       restrict: 'E',
-      link: function (scope, element) { // jshint ignore:line
-
-        /* jshint ignore:start */
+      /* jshint ignore:start */
+      link: function (scope, element) {
 
         /**
          * Get the current time
@@ -183,8 +182,7 @@ angular.module('stockApp')
           }
         });
 
-        /* jshint ignore:end */
-
       }
+      /* jshint ignore:end */
     };
   });
