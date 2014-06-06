@@ -1,4 +1,4 @@
-// Generated on 2014-05-07 using generator-angular 0.8.0
+// Generated on 2014-06-06 using generator-angular 0.9.0-0
 'use strict';
 
 // # Globbing
@@ -29,7 +29,7 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['bowerInstall']
+        tasks: ['wiredep']
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
@@ -147,12 +147,10 @@ module.exports = function (grunt) {
     },
 
     // Automatically inject Bower components into the app
-    bowerInstall: {
+    wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        exclude: [
-          'exporting.src.js'
-        ],
+        exclude: ['exporting.src.js'],
         ignorePath: new RegExp('^<%= yeoman.app %>/')
       }
     },
@@ -197,7 +195,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // The following *-min tasks produce minified files in the dist folder
+    // The following *-min tasks will produce minified files in the dist folder
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
@@ -338,7 +336,7 @@ module.exports = function (grunt) {
     // Test settings
     karma: {
       unit: {
-        configFile: 'karma.conf.js',
+        configFile: 'test/karma.conf.js',
         singleRun: true
       }
     }
@@ -352,7 +350,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'bowerInstall',
+      'wiredep',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -375,7 +373,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'bowerInstall',
+    'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
