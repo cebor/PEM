@@ -4,6 +4,11 @@ angular.module('stockApp')
   .factory('bitcoinData', function ($http, YAHOO_API, BITCOIN_CSV) {
 
     var bitcoinData = {
+
+      /**
+       * get data from yahoo api
+       * @return  yql json object
+       */
       yql: function () {
 
         var query = 'select * from csv where url = "' + BITCOIN_CSV + '"';
@@ -16,6 +21,10 @@ angular.module('stockApp')
 
       },
 
+      /**
+       * get data for highcharts
+       * @return  highcharts json object
+       */
       get: function () {
 
         return this.yql().then(function (yql) {
