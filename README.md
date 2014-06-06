@@ -1,13 +1,6 @@
 Personal Exchange Monitoring [![Build Status](https://travis-ci.org/cebor/gui-project.svg)](https://travis-ci.org/cebor/gui-project)
 ===========
 
-Requirements
------------
-- [NodeJS](http://nodejs.org/)
-- [Yeoman + AngularJS generator](http://yeoman.io/)
-- [EditorConfig](http://editorconfig.org/)
-
-
 Installation
 -----------
 ```
@@ -18,23 +11,24 @@ npm install && bower install
 
 Usage
 -----------
-#### Dev Server
+### Development Server
 ```
 grunt serve
 ```
 
-#### Test
+### Test
 ```
 grunt test
 ```
 
-#### Build
+### Build
 ```
 grunt build
 ```
 
-#### Generator
-[AngularJS generator docs](https://github.com/yeoman/generator-angular#generators)
+### Generator
+We use [yeoman](http://yeoman.io) and [generator-angular](https://github.com/yeoman/generator-angular)
+for our app architecture.
 
 Demo
 -----------
@@ -42,11 +36,14 @@ http://gui.stkn.org
 
 Slides
 -----------
+
+### Interim
 http://slides.com/cebor/stockticker
 
+### Final
+http://slides.com/marcelputz/deck
 
 ***
-
 
 Tutorials & Docs
 -----------
@@ -60,7 +57,6 @@ Tutorials & Docs
 
 #### Docs
 - [Wiki](https://github.com/yeoman/yeoman/wiki)
-
 
 ### AngularJS
 
