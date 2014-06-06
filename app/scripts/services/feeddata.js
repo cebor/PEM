@@ -7,6 +7,11 @@ angular.module('stockApp')
     var VERSION = '1.0';
     var CALLBACK = 'JSON_CALLBACK';
 
+    /**
+     * get data for newsticker
+     * @param   args
+     * @return  json feed data
+     */
     return function (url, num) {
       return $http.jsonp(
         GOOGLE_FEED_API +

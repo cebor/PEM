@@ -27,7 +27,7 @@ angular.module('stockApp')
       },
 
       /**
-       * get one data for highcharts
+       * get data for highcharts
        * @param   args
        * @return  highcharts json object
        */

@@ -1,6 +1,11 @@
 'use strict';
 
 angular.module('stockApp')
+  /**
+   * Filter: resolve stock symbols to real names
+   * @param   symbol String/String[]
+   * @return  String/String[]
+   */
   .filter('symbolResolver', function () {
 
     function resolve(symbol) {
