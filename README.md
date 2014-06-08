@@ -27,7 +27,7 @@ grunt build
 ```
 
 ### Generator
-We use [yeoman](http://yeoman.io) & [generator-angular](https://github.com/yeoman/generator-angular)
+We use [yeoman](http://yeoman.io) + [generator-angular](https://github.com/yeoman/generator-angular)
 for the app architecture.
 
 Demo
