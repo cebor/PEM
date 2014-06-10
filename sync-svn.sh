@@ -9,7 +9,7 @@ rsync \
   --exclude ".gitignore" \
   --exclude "node_modules" \
   --exclude ".tmp" \
-  --exclude "app/bower_components" \
+  --exclude "bower_components" \
   --exclude "deploy.sh" \
   --delete \
   -avP . $SVN
