@@ -61,10 +61,11 @@ Tutorials & Docs
 ### AngularJS
 
 #### Tuts
+- [AngularJS-Learning](https://github.com/jmcunningham/AngularJS-Learning)
 - [Text Tut](http://docs.angularjs.org/tutorial)
-- [Video Tuts](https://www.youtube.com/user/angularjs)
 - [Video Tut](https://www.youtube.com/watch?v=i9MHigUZKEM)
 - [Video Tut](https://www.youtube.com/watch?v=M4spK4QeUKY)
+- [Video Tuts](https://www.youtube.com/user/angularjs)
 
 #### Docs
 - [Developer Guide](http://code.angularjs.org/1.2.16/docs/guide)
