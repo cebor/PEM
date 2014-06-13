@@ -16,7 +16,27 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    //expect(scope.awesomeThings.length).toBe(3);
+  it('Test Main Controller', function () {
+    expect(scope.stockTickerConfig.symbols)
+      .toEqual([
+        [
+          'YHOO',
+          'MSFT',
+          'KO',
+          'UNIA.AS'
+        ],
+        [
+          'GOOGL',
+          'AAPL',
+          'NSU.DE',
+          'SSU.DE'
+        ],
+        [
+          'NTDOF',
+          'BMW.DE',
+          'SIE.DE',
+          'DAI.DE'
+        ]
+      ]);
   });
 });
