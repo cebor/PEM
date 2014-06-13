@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" ng-app="stockApp">
+<html class="no-js">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body>
+  <body ng-app="stockApp">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container-fluid" ng-view=""></div>
+    <div class="container-fluid" ng-include="'views/main.html'" ng-controller="MainCtrl"></div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -29,7 +29,6 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/highstock-release/highstock.js"></script>
     <script src="bower_components/highstock-release/highcharts-more.js"></script>
     <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
