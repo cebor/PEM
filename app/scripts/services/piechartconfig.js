@@ -10,7 +10,7 @@ angular.module('stockApp')
           plotShadow: false
         },
         title: {
-          text: 'Share Pie'
+          text: 'Share Pie (Today)'
         },
         tooltip: {
           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
