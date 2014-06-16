@@ -36,7 +36,6 @@ http://gui.stkn.org
 
 Slides
 -----------
-
 ### Interim
 http://slides.com/cebor/stockticker
 
@@ -47,7 +46,6 @@ http://slides.com/marcelputz/deck
 
 Tutorials & Docs
 -----------
-
 ### Yeoman
 
 #### Tuts
