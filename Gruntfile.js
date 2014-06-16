@@ -188,7 +188,6 @@ module.exports = function (grunt) {
       html: '<%= yeoman.app %>/index.html',
       options: {
         dest: '<%= yeoman.dist %>',
-        root: '.',
         flow: {
           html: {
             steps: {
