@@ -1,4 +1,4 @@
-// Generated on 2014-06-21 using generator-angular 0.9.0
+// Generated on 2014-07-02 using generator-angular 0.9.2
 'use strict';
 
 // # Globbing
@@ -168,7 +168,7 @@ module.exports = function (grunt) {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
         exclude: ['exporting.src.js'],
-        ignorePath:  /..\//
+        ignorePath:  /\.\.\//
       }
     },
 
