@@ -167,7 +167,7 @@ module.exports = function (grunt) {
       },
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        exclude: ['exporting.src.js'],
+        exclude: ['modules/exporting.js'],
         ignorePath:  /\.\.\//
       }
     },
