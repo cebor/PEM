@@ -3,18 +3,18 @@
 angular.module('stockApp')
   .service('Zoom', function Zoom($interval, $timeout, chartXAxis) {
 
-    var month = 30 * 24 * 3600 * 1000;
+    var MONTH = 30 * 24 * 3600 * 1000;
 
     var interval;
 
     this.start = function (startDate, endDate) {
       if (!interval) {
-        var min = new Date(endDate).getTime() - month;
+        var min = new Date(endDate).getTime() - MONTH;
 
         chartXAxis.currentMin = min;
 
         interval = $interval(function () {
-          chartXAxis.currentMin -= month;
+          chartXAxis.currentMin -= MONTH;
 
           if (chartXAxis.currentMin <= new Date(startDate).getTime()) {
             chartXAxis.currentMin = min;
