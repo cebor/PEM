@@ -37,10 +37,10 @@ http://gui.stkn.org
 Slides
 -----------
 ### Interim
-http://slides.com/cebor/stockticker
+http://slides.com/cebor/pem
 
 ### Final
-http://slides.com/marcelputz/deck
+http://slides.com/marcelputz/pem
 
 ***
 
