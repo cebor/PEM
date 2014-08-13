@@ -5,7 +5,7 @@
   <div class="panel-body">
     <div ng-repeat="entry in feed.entries">
       <h4>
-        <a href="{{entry.link}}">{{entry.title}}</a>
+        <a href="{{entry.link}}" target="_blank">{{entry.title}}</a>
         <small>{{entry.publishedDate | date:'dd.MM.yyyy HH:mm'}}</small>
       </h4>
       {{entry.content | killHTML}}
