@@ -36,7 +36,13 @@ angular.module('stockApp')
 
         angular.forEach(scope.config.symbols, function (value, key) {
 
-          titles.push(Symbolresolver.resolve(value).join(', '));
+          Symbolresolver.resolve(value)
+            .then(function (data) {
+              titles.push(data.join(', '));
+            })
+            .then(function () {
+              scope.title = titles.join(' ● ');
+            });
 
           var slide = {
             stockChartConfig: new StockChartConfig(),
@@ -50,7 +56,11 @@ angular.module('stockApp')
           stockData.get(value, stockStartDate, stockEndDate).then(function (data) {
             that[key].stockChartConfig.series = data;
             that[key].stockChartConfig.xAxis = chartXAxis;
-            that[key].stockChartConfig.title.text = Symbolresolver.resolve(value).join(', ');
+
+            Symbolresolver.resolve(value).then(function (data) {
+              that[key].stockChartConfig.title.text = data.join(', ');
+            });
+
             that[key].stockChartConfig.loading = false;
             that[key].pieChartConfig.series.push(stockData.getPie(data));
             that[key].pieChartConfig.loading = false;
@@ -58,7 +68,7 @@ angular.module('stockApp')
 
         }, scope.slides);
 
-        scope.title = titles.join(' ● ');
+        //scope.title = titles.join(' ● ');
 
 
         /* zoom */
